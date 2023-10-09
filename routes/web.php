@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EntretienController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,7 @@ Route::get('/add-car', function () {
 Route::get('/index', function () {
     return view('front.index');
 });
+
+//Route::get('/add-test-data', 'EntretienController@addTestData');
+//Route::get('/add-test-data', 'App\Http\Controllers\EntretienController@addTestData');
+Route::resource('entretiens', EntretienController::class);
