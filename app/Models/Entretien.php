@@ -10,6 +10,7 @@ class Entretien extends Model
     use HasFactory;
    
     protected $fillable = [
+        'car_id',
         'kilometrage', // Add 'kilometrage' to the fillable array
         'date_entretien',
         'description',

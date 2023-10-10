@@ -17,6 +17,9 @@ use App\Http\Controllers\EntretienController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/admin', function () {
+    return view('admin.theme');
+});
 Route::get('/contact-us', function () {
     return view('front.contact-us');
 });
@@ -35,4 +38,9 @@ Route::get('/index', function () {
 
 //Route::get('/add-test-data', 'EntretienController@addTestData');
 //Route::get('/add-test-data', 'App\Http\Controllers\EntretienController@addTestData');
-Route::resource('entretiens', EntretienController::class);
+Route::resource('admin/entretiens', EntretienController::class);
+
+Route::post('admin/entretiens', [EntretienController::class, 'store'])->name('admin.entretiens.store');
+Route::get('admin/entretiens', [EntretienController::class, 'index'])->name('admin.entretiens.index');
+
+

@@ -18,14 +18,14 @@ License: You must have a valid license purchased only from themeforest(the above
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
         <meta charset="utf-8">
-        <link href="dist/images/logo.svg" rel="shortcut icon">
+        <link href="{{ asset('dist/images/logo.svg') }}" rel="shortcut icon">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Midone admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
         <meta name="keywords" content="admin template, Midone Admin Template, dashboard template, flat admin template, responsive admin template, web app">
         <meta name="author" content="LEFT4CODE">
         <title>Dashboard - Midone - Tailwind HTML Admin Template</title>
         <!-- BEGIN: CSS Assets-->
-        <link rel="stylesheet" href="dist/css/app.css" />
+        <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}">
         <!-- END: CSS Assets-->
     </head>
     <!-- END: Head -->
@@ -34,7 +34,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="mobile-menu md:hidden">
             <div class="mobile-menu-bar">
                 <a href="#" class="flex mr-auto">
-                    <img alt="Midone - HTML Admin Template" class="w-6" src="dist/images/logo.svg">
+                <img alt="Midone - HTML Admin Template" class="w-6" src="{{ asset('dist/images/logo.svg') }}">
                 </a>
                 <a href="javascript:;" class="mobile-menu-toggler"> <i data-lucide="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
             </div>
@@ -675,7 +675,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- BEGIN: Side Menu -->
             <nav class="side-nav">
                 <a href="#" class="intro-x flex items-center pl-5 pt-4">
-                    <img alt="Midone - HTML Admin Template" class="w-6" src="dist/images/logo.svg">
+                <img alt="Midone - HTML Admin Template" class="w-6" src="{{ asset('dist/images/logo.svg') }}">
                     <span class="hidden xl:block text-white text-lg ml-3"> Rubick </span> 
                 </a>
                 <div class="side-nav__devider my-6"></div>
@@ -755,16 +755,17 @@ License: You must have a valid license purchased only from themeforest(the above
     </a>
     <ul class="">
         <li>
-            <a href="index-2.html" class="side-menu">
+            <a href="{{ route('entretiens.create') }}" class="side-menu">
                 <div  class="fas fa-tools"> <i data-lucide="activity"></i> </div>
-                <div class="side-menu__title"> Suivie des vehicules </div>
+                <div class="side-menu__title">  Create entreiten </div>
             </a>
         </li>
         <li>
-            <a href="simple-menu-light-dashboard-overview-1.html" class="side-menu">
-                <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                <div class="side-menu__title"> Simple Menu </div>
-            </a>
+        <a href="{{ route('admin.entretiens.index') }}" class="side-menu">
+    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+    <div class="side-menu__title"> Liste des entretiens </div>
+</a>
+
         </li>
         <li>
             <a href="top-menu-light-dashboard-overview-1.html" class="side-menu">
@@ -1414,10 +1415,10 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- BEGIN: JS Assets-->
         <script src="../developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=["your-google-map-api"]&libraries=places"></script>
-        <script src="dist/js/app.js"></script>
+        <script src="{{ asset('dist/js/app.js') }}"></script>
 
         
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src=" {{ asset('https://code.jquery.com/jquery-3.6.0.min.js')}}"></script>
 
     <!-- Include Bootstrap JavaScript (optional) -->
 
@@ -1426,6 +1427,32 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <!-- Initialize DataTable -->
     <script>
+
+
+function confirmDelete(deleteUrl) {
+    if (confirm("Êtes-vous sûr de vouloir supprimer cet entretien ?")) {
+        fetch(deleteUrl, {
+            method: 'DELETE',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}', // Assurez-vous d'avoir le jeton CSRF disponible
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => {
+            if (response.status === 200) {
+                // Suppression réussie
+                alert('Entretien supprimé avec succès');
+                location.reload(); // Actualisez la page
+            } else {
+                // Gestion des erreurs ici, si nécessaire
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    }
+}
+
         $(document).ready(function() {
             $('#example').DataTable();
         });
