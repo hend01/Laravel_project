@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReclamationController;
+use App\Http\Controllers\ReponseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +33,6 @@ Route::get('/add-car', function () {
 Route::get('/index', function () {
     return view('front.index');
 });
+
+Route::resource('reclamations', ReclamationController::class);
+Route::resource('reponses', ReponseController::class);
