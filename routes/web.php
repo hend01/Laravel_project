@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\AvisController;
+use App\Http\Controllers\EvaluationController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,3 +32,5 @@ Route::get('/add-car', function () {
 Route::get('/index', function () {
     return view('front.index');
 });
+Route::get('/evaluations', [EvaluationController::class, 'index']);
+Route::get('/avis', [AvisController::class, 'index']);
