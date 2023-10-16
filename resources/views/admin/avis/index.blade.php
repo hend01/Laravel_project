@@ -31,11 +31,11 @@
                     </thead>
                     <tbody>
                         @foreach ($aviss as $avis)
-                        <tr>
-                            <td>{{ $avis->evaluation->driver->id }}</td>
-                            <td>{{ $avis->commentaire }} </td>
-                            <td>{{ $avis->evaluation->user->name }}</td>
-                        </tr>
+                            <tr>
+                                <td>{{ $avis->evaluation->driver->id }}</td>
+                                <td>{{ $avis->commentaire }} </td>
+                                <td>{{ $avis->evaluation->user->name }}</td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>

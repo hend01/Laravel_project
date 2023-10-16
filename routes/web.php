@@ -33,4 +33,7 @@ Route::get('/index', function () {
     return view('front.index');
 });
 Route::get('/evaluations', [EvaluationController::class, 'index']);
+Route::get('/blog', [EvaluationController::class, 'blog']);
+Route::post('/store-evaluation', [EvaluationController::class, 'store']);
+
 Route::get('/avis', [AvisController::class, 'index']);

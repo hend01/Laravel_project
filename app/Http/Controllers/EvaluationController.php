@@ -14,14 +14,27 @@ class EvaluationController extends Controller
         return view('admin.evaluations.index', compact('evaluations'));
     }
 
-    public function create()
+    public function blog()
     {
-        // Code pour la méthode "create" (par exemple, afficher un formulaire de création)
+        return view('front.blog.blog');
     }
 
     public function store(Request $request)
     {
-        // Code pour la méthode "store" (traiter le formulaire de création)
+        // Récupérez les données du formulaire
+        $rating = $request->input('rating');
+
+        // Créez une nouvelle évaluation en utilisant Eloquent
+        $evaluation = new Evaluation();
+        $evaluation->note = $rating+1;
+        $evaluation->driver_id = 2;
+        $evaluation->user_id = 1;
+        $evaluation->save();
+
+        // Vous pouvez également gérer d'autres données ici, comme le commentaire
+
+        // Répondez au client (facultatif)
+        return response()->json(['message' => 'Évaluation enregistrée avec succès']);
     }
 
     public function show($id)

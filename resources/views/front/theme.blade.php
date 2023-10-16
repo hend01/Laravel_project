@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>GO Home-2</title>
+        <title>Home</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -22,6 +22,7 @@
 
         <!-- Main Css -->
         <link rel="stylesheet" type="text/css" href="assets/css/theme.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
         <!--[if lt IE 9]>
@@ -318,7 +319,9 @@
         <!-- Sticky Header -->
         <script src="assets/js/jquery.sticky.js"></script>
         <!-- Wow JS -->
-        <script src="assets/plugins/WOW-master/dist/wow.min.js" type="text/javascript"></script>   
+        <script src="assets/plugins/WOW-master/dist/wow.min.js" type="text/javascript"></script>  
+        <script src="http://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+ 
 
         <!-- Slider JS -->        
 
