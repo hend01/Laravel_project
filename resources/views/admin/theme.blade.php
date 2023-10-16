@@ -17,14 +17,14 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- Include DataTables Bootstrap 5 CSS -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
         <meta charset="utf-8">
-        <link href="dist/images/logo.svg" rel="shortcut icon">
+        <link href="/dist/images/logo.svg" rel="shortcut icon">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Midone admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
         <meta name="keywords" content="admin template, Midone Admin Template, dashboard template, flat admin template, responsive admin template, web app">
         <meta name="author" content="LEFT4CODE">
         <title>Dashboard - Midone - Tailwind HTML Admin Template</title>
         <!-- BEGIN: CSS Assets-->
-        <link rel="stylesheet" href="dist/css/app.css" />
+        <link rel="stylesheet" href="/dist/css/app.css" />
         <!-- END: CSS Assets-->
     </head>
     <!-- END: Head -->
@@ -33,7 +33,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <div class="mobile-menu md:hidden">
             <div class="mobile-menu-bar">
                 <a href="#" class="flex mr-auto">
-                    <img alt="Midone - HTML Admin Template" class="w-6" src="dist/images/logo.svg">
+                    <img alt="Midone - HTML Admin Template" class="w-6" src="/dist/images/logo.svg">
                 </a>
                 <a href="javascript:;" class="mobile-menu-toggler"> <i data-lucide="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
             </div>
@@ -674,8 +674,8 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- BEGIN: Side Menu -->
             <nav class="side-nav">
                 <a href="#" class="intro-x flex items-center pl-5 pt-4">
-                    <img alt="Midone - HTML Admin Template" class="w-6" src="dist/images/logo.svg">
-                    <span class="hidden xl:block text-white text-lg ml-3"> Rubick </span> 
+                    <img alt="Midone - HTML Admin Template" class="w-6" src="/dist/images/logo.svg">
+                    <span class="hidden xl:block text-white text-lg ml-3"> Rubick </span>
                 </a>
                 <div class="side-nav__devider my-6"></div>
                 <ul>
@@ -683,7 +683,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <a href="javascript:;.html" class="side-menu side-menu--active">
                             <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
                             <div class="side-menu__title">
-                                Dashboard 
+                                Dashboard
                                 <div class="side-menu__sub-icon transform rotate-180"> <i data-lucide="chevron-down"></i> </div>
                             </div>
                         </a>
@@ -718,7 +718,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <a href="javascript:;" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="box"></i> </div>
                             <div class="side-menu__title">
-                                Menu Layout 
+                                Menu Layout
                                 <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                             </div>
                         </a>
@@ -747,7 +747,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <a href="javascript:;" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="shopping-bag"></i> </div>
                             <div class="side-menu__title">
-                                E-Commerce 
+                                E-Commerce
                                 <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                             </div>
                         </a>
@@ -768,7 +768,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <a href="javascript:;" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title">
-                                        Products 
+                                        Products
                                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                                     </div>
                                 </a>
@@ -791,7 +791,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <a href="javascript:;" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title">
-                                        Transactions 
+                                        Transactions
                                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                                     </div>
                                 </a>
@@ -814,7 +814,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <a href="javascript:;" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title">
-                                        Sellers 
+                                        Sellers
                                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                                     </div>
                                 </a>
@@ -882,7 +882,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <a href="javascript:;" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="edit"></i> </div>
                             <div class="side-menu__title">
-                                Crud 
+                                Crud
                                 <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                             </div>
                         </a>
@@ -905,7 +905,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <a href="javascript:;" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="users"></i> </div>
                             <div class="side-menu__title">
-                                Users 
+                                Users
                                 <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                             </div>
                         </a>
@@ -934,7 +934,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <a href="javascript:;" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="trello"></i> </div>
                             <div class="side-menu__title">
-                                Profile 
+                                Profile
                                 <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                             </div>
                         </a>
@@ -963,7 +963,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <a href="javascript:;" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="layout"></i> </div>
                             <div class="side-menu__title">
-                                Pages 
+                                Pages
                                 <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                             </div>
                         </a>
@@ -972,7 +972,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <a href="javascript:;" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title">
-                                        Wizards 
+                                        Wizards
                                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                                     </div>
                                 </a>
@@ -1001,7 +1001,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <a href="javascript:;" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title">
-                                        Blog 
+                                        Blog
                                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                                     </div>
                                 </a>
@@ -1030,7 +1030,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <a href="javascript:;" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title">
-                                        Pricing 
+                                        Pricing
                                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                                     </div>
                                 </a>
@@ -1053,7 +1053,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <a href="javascript:;" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title">
-                                        Invoice 
+                                        Invoice
                                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                                     </div>
                                 </a>
@@ -1076,7 +1076,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <a href="javascript:;" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title">
-                                        FAQ 
+                                        FAQ
                                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                                     </div>
                                 </a>
@@ -1138,7 +1138,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <a href="javascript:;" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="inbox"></i> </div>
                             <div class="side-menu__title">
-                                Components 
+                                Components
                                 <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                             </div>
                         </a>
@@ -1147,7 +1147,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <a href="javascript:;" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title">
-                                        Table 
+                                        Table
                                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                                     </div>
                                 </a>
@@ -1170,7 +1170,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <a href="javascript:;" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title">
-                                        Overlay 
+                                        Overlay
                                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                                     </div>
                                 </a>
@@ -1261,7 +1261,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <a href="javascript:;" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="sidebar"></i> </div>
                             <div class="side-menu__title">
-                                Forms 
+                                Forms
                                 <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                             </div>
                         </a>
@@ -1294,7 +1294,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <a href="javascript:;" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title">
-                                        Wysiwyg Editor 
+                                        Wysiwyg Editor
                                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                                     </div>
                                 </a>
@@ -1343,7 +1343,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <a href="javascript:;" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
                             <div class="side-menu__title">
-                                Widgets 
+                                Widgets
                                 <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                             </div>
                         </a>
@@ -1376,15 +1376,15 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- END: Content -->
         </div>
         <!-- BEGIN: Dark Mode Switcher-->
-     
+
         <!-- END: Dark Mode Switcher-->
-        
+
         <!-- BEGIN: JS Assets-->
         <script src="../developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=["your-google-map-api"]&libraries=places"></script>
-        <script src="dist/js/app.js"></script>
+        <script src="/dist/js/app.js"></script>
 
-        
+
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Include Bootstrap JavaScript (optional) -->

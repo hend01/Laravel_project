@@ -2,10 +2,10 @@
 
 @section('content')
 
-<article> 
+<article>
     <!-- Breadcrumb -->
-    <section class="theme-breadcrumb pad-50">                
-        <div class="theme-container container ">  
+    <section class="theme-breadcrumb pad-50">
+        <div class="theme-container container ">
             <div class="row">
                 <div class="col-sm-8 pull-left">
                     <div class="title-wrap">
@@ -13,20 +13,20 @@
                         <p class="fs-16 no-margin"> Get in touch with us easily </p>
                     </div>
                 </div>
-                <div class="col-sm-4">                        
+                <div class="col-sm-4">
                     <ol class="breadcrumb-menubar list-inline">
-                        <li><a href="#" class="gray-clr">Home</a></li>                                   
+                        <li><a href="#" class="gray-clr">Home</a></li>
                         <li class="active">contact</li>
                     </ol>
-                </div>  
+                </div>
             </div>
         </div>
     </section>
     <!-- /.Breadcrumb -->
 
     <!-- Contact Us -->
-    <section class="contact-page pad-30">                    
-        <div class="theme-container container">               
+    <section class="contact-page pad-30">
+        <div class="theme-container container">
             <div class="row">
                 <div class="col-md-4 col-sm-6 col-md-offset-1">
                     <ul class="contact-detail title-2 pt-50">
@@ -54,9 +54,9 @@
                             <div class="form-group wow fadeInUp" data-wow-offset="50" data-wow-delay=".30s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
                                 <div class="col-sm-3"> <label class="title-2"> Message: </label></div>
                                 <div class="col-sm-9"> <textarea class="form-control" name="Message" id="Message" required="" cols="25" rows="3"></textarea> </div>
-                            </div>                                  
+                            </div>
                             <div class="form-group wow fadeInUp" data-wow-offset="50" data-wow-delay=".30s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
-                                <div class="col-sm-9 col-xs-12 pull-right"> 
+                                <div class="col-sm-9 col-xs-12 pull-right">
                                     <button name="submit" id="submit_btn" class="btn-1"> send message </button>
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
             </div>
         </div>
     </section>
-  
+
 
 </article>
 

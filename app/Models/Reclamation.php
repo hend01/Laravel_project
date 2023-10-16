@@ -9,6 +9,10 @@ class Reclamation extends Model
 {
     use HasFactory;
 
+    protected $table = 'reclamations';
+
+    protected $fillable = ['sujet', 'description'];
+
     public function reponses()
     {
         return $this->hasMany(Reponse::class);

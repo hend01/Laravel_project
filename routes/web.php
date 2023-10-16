@@ -26,13 +26,17 @@ Route::get('/contacts', function () {
     return view('admin.contact');
 });
 
+
 Route::get('/add-car', function () {
     return view('admin.add-car');
 });
 
 Route::get('/index', function () {
     return view('front.index');
-});
+})->name('index');
 
-Route::resource('reclamations', ReclamationController::class);
-Route::resource('reponses', ReponseController::class);
+Route::get('/reclamation/create', [ReclamationController::class, 'create'])->name('reclamations.create');
+Route::post('/reclamations', [ReclamationController::class, 'store'])->name('reclamations.store');
+Route::get('/back/reclamations', [ReclamationController::class, 'index'])->name('reclamations.index');
+Route::delete('/reclamations/{reclamation}', [ReclamationController::class, 'destroy'])->name('reclamations.destroy');
+
