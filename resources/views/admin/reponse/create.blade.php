@@ -9,8 +9,8 @@
         <!-- BEGIN: Breadcrumb -->
         <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Application</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                <li class="breadcrumb-item"><a href="#">Reponse</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Ajouter</li>
             </ol>
         </nav>
         <!-- END: Breadcrumb -->
@@ -216,9 +216,9 @@
     </div>
     <!-- END: Top Bar -->
         <h2 class="intro-y text-lg font-medium mt-10" style="background-color:#1e40af;color:white;border-radius: 8px;">
-            <span style="margin-left: 11px;"> Add Car </span>
+            <span style="margin-left: 11px;"> Ajouter une Reponse </span>
          </h2>
-    <div class="grid grid-cols-12 gap-6 mt-5">
+    <div class="grid grid-cols gap-6 mt-5">
         <div class="intro-y col-span-12 lg:col-span-6">
             <!-- BEGIN: Form Layout -->
 
@@ -229,42 +229,27 @@
                 <div class="intro-y box">
                     <div class="flex flex-col sm:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
                         <h2 class="font-medium text-base mr-auto">
-                            Input
+                           le sujet : {{ $reclamation->sujet }}
                         </h2>
 
                     </div>
                     <div id="input" class="p-5">
                         <div class="preview" style="display: block;">
 
-
-                            <form>
+                        <form method="post" action="{{ route('reponses.store') }}">
+                            @csrf
                             <div>
-                                <label for="regular-form-1" class="form-label">Input Text</label>
-                                <input id="regular-form-1" type="text" class="form-control" placeholder="Input text">
+                                <input type="hidden" name="reclamation_id" value="{{ $reclamation->id }}">
+                                <label for="regular-form-1" class="form-label">Contenu de la réponse</label>
+                                <textarea name="contenu" id="contenu" class="form-control" rows="4"  placeholder="Input text"></textarea>
+                                <button type="submit" class="btn btn-primary">Envoyer la réponse</button>
+
                             </div>
-                            <div class="mt-3">
-                                <label for="regular-form-2" class="form-label">Rounded</label>
-                                <input id="regular-form-2" type="text" class="form-control form-control-rounded" placeholder="Rounded">
-                            </div>
-                            <div class="mt-3">
-                                <label for="regular-form-3" class="form-label">With Help</label>
-                                <input id="regular-form-3" type="text" class="form-control" placeholder="With help">
-                                <div class="form-help">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
-                            </div>
-                            <div class="mt-3">
-                                <label for="regular-form-4" class="form-label">Password</label>
-                                <input id="regular-form-4" type="password" class="form-control" placeholder="Password">
-                            </div>
-                            <div class="mt-3">
-                                <label for="regular-form-5" class="form-label">Disabled</label>
-                                <input id="regular-form-5" type="text" class="form-control" placeholder="Disabled" disabled="">
-                            </div>
+                        </form>
+
+
                         </div>
-                        <div class="text-right mt-5">
-                            <button type="button" class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
-                            <button type="button" class="btn btn-primary w-24">Save</button>
-                        </div>
-                    </form>
+
                     </div>
                 </div>
                 <!-- END: Input -->
@@ -272,7 +257,6 @@
 
                 <!-- END: Select Options -->
             </div>
-            <div class="col-md-2"></div>
             </div>
             <!-- END: Form Layout -->
         </div>

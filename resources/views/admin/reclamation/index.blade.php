@@ -24,16 +24,23 @@
                                 <form method="post" action="{{ route('reclamations.destroy', $reclamation->id) }}">
                                     @method('delete')
                                     @csrf
-                                    <button type="submit"class="flex items-center justify-center text-danger">
+                                    <button type="submit" class="flex items-center justify-center text-danger">
                                         <i data-lucide="trash" class="w-4 h-4 mr-2"></i> Supprimer
                                     </button>
-
-
                                 </form>
-                                <button type="submit"class="flex items-center justify-center ">
-                                    <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Repondre
-                                </button>
                             </td>
+                            <td>
+                                @if ($reclamation->reponses->count() > 0)
+                                <a href="{{ route('admin.reponses.show', $reclamation->reponses->first()->id) }}" class="flex items-center justify-center">
+                                    <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Voir la Réponse
+                                    </a>
+                                @else
+                                    <a href="{{ route('admin.reponse.create', ['reclamation_id' => $reclamation->id]) }}" class="flex items-center justify-center">
+                                        <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Répondre
+                                    </a>
+                                @endif
+                            </td>
+
                         </tr>
                     @endforeach
                 </tbody>
