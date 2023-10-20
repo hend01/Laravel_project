@@ -120,7 +120,7 @@
     </div>
             <div>
  <h2 class="intro-y text-lg font-medium mt-10" style="background-color:#1e40af;color:white;border-radius: 8px;">
-            <span style="margin-left: 11px;"> Add Car </span>
+            <span style="margin-left: 11px;"> Entretien List </span>
          </h2>    <!-- Display a table with the list of entretiens -->
    
     <table class="table table-bordered">
