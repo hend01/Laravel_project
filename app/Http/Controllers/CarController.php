@@ -86,8 +86,7 @@ public function updateCar(Request $request, $id)
             'model' => 'required|string|max:255',
             'year' => 'required|integer|between:1900,' . date('Y'),
             'color' => 'required|string|max:255',
-            'license_plate' => 'required|string|max:10|unique:cars,license_plate,' . $id, // Assurez-vous que la plaque d'immatriculation est unique, sauf pour la voiture actuellement mise à jour
-        ], [
+            'license_plate' => 'required|string|max:10|unique:cars,license_plate,' . $id, 
             'license_plate.unique' => 'This license plate is already in use.',
             'make.required' => 'The "Make" field is required.',
             'model.required' => 'The "Model" field is required.',

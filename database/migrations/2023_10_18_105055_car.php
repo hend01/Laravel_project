@@ -19,8 +19,8 @@ return new class extends Migration
             $table->integer('year');
             $table->string('color');
             $table->string('license_plate');
-            $table->unsignedBigInteger('driver_id'); // hedhi thoto driver id fel table 
-            $table->foreign('driver_id')->references('id')->on('drivers'); // w hedhi t3aref bih kima fel devoir naamlouha references ..
+            $table->unsignedBigInteger('driver_id'); 
+            $table->foreign('driver_id')->references('id')->on('drivers'); 
             $table->timestamps();
         });
     }
@@ -36,4 +36,3 @@ return new class extends Migration
 
 
 
-/// stanenno ok nhel beb l youssef 

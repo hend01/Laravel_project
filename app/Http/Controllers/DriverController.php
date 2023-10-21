@@ -12,9 +12,8 @@ class DriverController extends Controller
     public function index(WeatherService $weatherService)
     {
         $drivers = driver::all(); 
-        $city = 'Tunis'; 
+        $city = 'Nabeul'; 
         $weatherData = $weatherService->getCurrentWeather($city);
-
         return view('admin.list-drivers', compact('drivers','weatherData'));
     }
     public function addDriver(Request $request)
