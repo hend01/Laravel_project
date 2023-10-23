@@ -32,7 +32,7 @@ Route::get('/contacts', function () {
     return view('admin.contact');
 });
 // Route::get('/addCar', 'CarController@create')->name('cars.create');
-//Route::get('/addCar', [CarController::class, 'create'])->name('cars.addCar'); 
+Route::get('/addCar', [CarController::class, 'create'])->name('cars.addCar'); 
 Route::post('/addCar', [CarController::class, 'addCar'])->name('cars.addCar');
 Route::delete('/cars/{id}', [CarController::class, 'deleteCar'])->name('cars.deleteCar');
 
@@ -44,7 +44,7 @@ Route::get('/index', function () {
 });
 Route::get('/cars', [CarController::class, 'index'])->middleware('auth'); 
 Route::get('/drivers', [DriverController::class, 'index'])->middleware('auth'); 
-//Route::get('/addDriver', [DriverController::class, 'create'])->name('drivers.addDriver'); 
+Route::get('/addDriver', [DriverController::class, 'create'])->name('drivers.addDriver'); 
 Route::post('/addDriver', [DriverController::class, 'addDriver'])->name('drivers.addDriver');
 Route::delete('/drivers/{id}', [DriverController::class, 'deleteDriver'])->name('drivers.deleteDriver');
 Route::get('/drivers/{driver}', [DriverController::class, 'editDriver'])->name('drivers.edit'); // Afficher le formulaire de mise à jour
