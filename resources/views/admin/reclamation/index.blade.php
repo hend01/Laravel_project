@@ -57,10 +57,18 @@
                                     @endif
                                 </td>
 
+
+
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+                <a href="{{ route('reclamations.export.excel') }}" class="btn btn-info">
+                    <i data-lucide="sheet"></i>Excel
+                </a>
+                <a href="{{ route('reclamations.export.pdf') }}" class="btn btn-primary">
+                    <i data-lucide="file-text"></i>PDF
+                </a>
             </div>
         </div>
     @endsection
