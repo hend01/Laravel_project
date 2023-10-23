@@ -1,6 +1,8 @@
 @extends('admin.theme')
 
 
+
+
 @section('content')
 <div class="content">
 <div class="top-bar">
@@ -116,53 +118,75 @@
         <!-- END: Account Menu -->
     </div>
             <div>
- <h2 class="intro-y text-lg font-medium mt-10" style="background-color:#1e40af;color:white;border-radius: 8px;">
-            <span style="margin-left: 11px;"> Add Entretien </span>
-         </h2>    <!-- Display a table with the list of entretiens -->
-   
-         <div class="container mt-5">
-    
-<form method="POST" action="{{ route('admin.entretiens.store') }}">
+            <h2 class="intro-y text-lg font-medium mt-10" style="background-color:#1e40af;color:white;border-radius: 8px;">
+            <span style="margin-left: 11px;"> Generate Facture details</span>
+         </h2> 
+            <div class="container1" style="position: absolute; top: 20%; left: 20%;">
+
+
+            <form action="{{ route('admin.facture.upload') }}" method="POST" enctype="multipart/form-data" class="p-4 bg-light rounded">
     @csrf
-    <div class="mb-3">
-    <label for="car_id" class="form-label">Sélectionnez la voiture</label>
-    <select class="form-select" id="car_id" name="car_id" >
-        <option value="">Sélectionnez une voiture</option>
-        @foreach($cars as $car)
-            <option value="{{ $car->id }}">{{ $car->id }}</option>
-        @endforeach
-    </select>
-    @error('car_id')
+    <div class="form-group">
+        <label for="factureFile" class="h3" style="font-size: 24px;">Choisissez le fichier de facture :</label>
+        <input type="file" class="form-control form-control-lg mt-2" name="factureFile" id="factureFile" accept=".png, .jpg, .jpeg, .pdf">
+        @error('factureFile') <!-- Spécifiez le nom du champ pour l'erreur -->
     <div class="text-danger">{{ $message }}</div>
     @enderror
-</div>
-
-    <div class="mb-3">
-        <label for="kilometrage" class="form-label">Kilométrage</label>
-        <input type="text" class="form-control" id="kilometrage" name="kilometrage" >
-        @error('kilometrage')
-        <div class="text-danger">{{ $message }}</div>
-    @enderror
     </div>
-    <div class="mb-3">
-        <label for="date_entretien" class="form-label">Date d'Entretien</label>
-        <input type="date" class="form-control" id="date_entretien" name="date_entretien" >
-        @error('date_entretien')
-        <div class="text-danger">{{ $message }}</div>
-    @enderror
-    </div>
-    <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="description" name="description" rows="3" ></textarea>
-        @error('description')
-        <div class="text-danger">{{ $message }}</div>
-    @enderror
-    </div>
-    <button type="submit" class="btn btn-primary">Créer</button>
+    <button type="submit" class="btn btn-primary btn-lg mt-3">Sélectionnez et Extrayez</button>
 </form>
 
-</div>
-</div>
 
+
+
+    @if(isset($data) && isset($data[1]))
+        <div class="mt-4">
+            <h1 class="h3">Résultats de l'extraction de la facture (Fournisseur Google) :</h2>
+            @foreach($data[1]['extracted_data'] as $result)
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Informations de facture :</h5>
+                        <ul class="list-group list-group-flush">
+                            @if (isset($result['customer_information']))
+                                <li class="list-group-item"><strong>Nom du client :</strong> {{ $result['customer_information']['customer_name'] }}</li>
+                                <li class="list-group-item"><strong>Adresse du client :</strong> {{ $result['customer_information']['customer_address'] }}</li>
+                                <li class="list-group-item"><strong>Email du client :</strong> {{ $result['customer_information']['customer_email'] }}</li>
+                                <li class="list-group-item"><strong>ID du client :</strong> {{ $result['customer_information']['customer_id'] }}</li>
+                            @endif
+                            @if (isset($result['merchant_information']))
+                                <li class="list-group-item"><strong>Nom du marchand :</strong> {{ $result['merchant_information']['merchant_name'] }}</li>
+                                <li class="list-group-item"><strong>Adresse du marchand :</strong> {{ $result['merchant_information']['merchant_address'] }}</li>
+                                <li class="list-group-item"><strong>Téléphone du marchand :</strong> {{ $result['merchant_information']['merchant_phone'] }}</li>
+                                <li class="list-group-item"><strong>Email du marchand :</strong> {{ $result['merchant_information']['merchant_email'] }}</li>
+                            @endif
+                            <li class="list-group-item"><strong>Numéro de facture :</strong> {{ $result['invoice_number'] }}</li>
+                            <li class="list-group-item"><strong>Total de la facture :</strong> {{ $result['invoice_total'] }} {{ $result['locale']['currency'] }}</li>
+                            <li class="list-group-item"><strong>Date :</strong> {{ $result['date'] }}</li>
+                            <li class="list-group-item"><strong>Date d'échéance :</strong> {{ $result['due_date'] }}</li>
+                            @if (isset($result['item_lines']))
+                                <li class="list-group-item"><strong>Articles :</strong></li>
+                                <ul class="list-group">
+                                    @foreach($result['item_lines'] as $item)
+                                        <li class="list-group-item"><strong>Description :</strong> {{ $item['description'] }}</li>
+                                        <li class="list-group-item"><strong>Quantité :</strong> {{ $item['quantity'] }}</li>
+                                        <li class="list-group-item"><strong>Montant :</strong> {{ $item['amount'] }} {{ $result['locale']['currency'] }}</li>
+                                        <li class="list-group-item"><strong>Prix unitaire :</strong> {{ $item['unit_price'] }} {{ $result['locale']['currency'] }}</li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </ul>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    @endif
+
+    <form method="POST" action="{{ route('facture.save') }}">
+        @csrf
+        @if(isset($result))
+            <input type="hidden" name="facture_data" value="{{ json_encode($result) }}">
+            <button type="submit" class="btn btn-success btn-lg mt-3">Enregistrer dans la base de données</button>
+        @endif
+    </form>
 </div>
 @endsection

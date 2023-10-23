@@ -15,6 +15,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <head>
 
 <!-- Include DataTables Bootstrap 5 CSS -->
+<link rel="stylesheet" href="{{ asset('resources/css/app.css') }}">
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
         <meta charset="utf-8">
@@ -768,10 +769,18 @@ License: You must have a valid license purchased only from themeforest(the above
 
         </li>
         <li>
-            <a href="top-menu-light-dashboard-overview-1.html" class="side-menu">
-                <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                <div class="side-menu__title"> Top Menu </div>
-            </a>
+        <a href="{{ route('admin.facture.upload') }}" class="side-menu">
+    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+    <div class="side-menu__title">  Generate Facture </div>
+</a>
+
+        </li>
+        <li>
+        <a href="{{ route('facture.index') }}" class="side-menu">
+    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+    <div class="side-menu__title">   Facture  </div>
+</a>
+
         </li>
     </ul>
 </li>

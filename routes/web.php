@@ -44,6 +44,18 @@ Route::get('admin/extraire-facture', [FactureController::class, 'extraireFacture
 Route::resource('admin/entretiens', EntretienController::class);
 
 Route::post('admin/entretiens', [EntretienController::class, 'store'])->name('admin.entretiens.store');
+
 Route::get('admin/entretiens', [EntretienController::class, 'index'])->name('admin.entretiens.index');
 
+Route::get('admin/facture/upload', [FactureController::class, 'showUploadForm'])->name('admin.facture.upload');
 
+Route::post('admin/facture/upload', [FactureController::class, 'uploadAndExtractFacture'])->name('facture.upload');
+
+
+Route::post('admin/facture/save', [FactureController::class, 'saveFacture'])->name('facture.save');
+
+
+Route::get('admin/facture', [FactureController::class, 'index'])->name('facture.index');
+Route::get('admin/facture/{id}/edit', [FactureController::class, 'edit'])->name('facture.edit');
+Route::put('admin/factures/{id}', [FactureController::class, 'update'])->name('facture.update');
+Route::delete('admin/factures/{id}', [FactureController::class, 'destroy'])->name('facture.destroy');

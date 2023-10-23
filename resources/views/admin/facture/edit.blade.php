@@ -1,4 +1,10 @@
+
+
+
+
 @extends('admin.theme')
+
+
 
 
 @section('content')
@@ -115,54 +121,56 @@
         </div>
         <!-- END: Account Menu -->
     </div>
-            <div>
- <h2 class="intro-y text-lg font-medium mt-10" style="background-color:#1e40af;color:white;border-radius: 8px;">
-            <span style="margin-left: 11px;"> Add Entretien </span>
-         </h2>    <!-- Display a table with the list of entretiens -->
-   
-         <div class="container mt-5">
-    
-<form method="POST" action="{{ route('admin.entretiens.store') }}">
-    @csrf
-    <div class="mb-3">
-    <label for="car_id" class="form-label">Sélectionnez la voiture</label>
-    <select class="form-select" id="car_id" name="car_id" >
-        <option value="">Sélectionnez une voiture</option>
-        @foreach($cars as $car)
-            <option value="{{ $car->id }}">{{ $car->id }}</option>
-        @endforeach
-    </select>
-    @error('car_id')
-    <div class="text-danger">{{ $message }}</div>
-    @enderror
-</div>
 
-    <div class="mb-3">
-        <label for="kilometrage" class="form-label">Kilométrage</label>
-        <input type="text" class="form-control" id="kilometrage" name="kilometrage" >
-        @error('kilometrage')
-        <div class="text-danger">{{ $message }}</div>
-    @enderror
-    </div>
-    <div class="mb-3">
-        <label for="date_entretien" class="form-label">Date d'Entretien</label>
-        <input type="date" class="form-control" id="date_entretien" name="date_entretien" >
-        @error('date_entretien')
-        <div class="text-danger">{{ $message }}</div>
-    @enderror
-    </div>
-    <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="description" name="description" rows="3" ></textarea>
-        @error('description')
-        <div class="text-danger">{{ $message }}</div>
-    @enderror
-    </div>
-    <button type="submit" class="btn btn-primary">Créer</button>
-</form>
 
-</div>
-</div>
 
+
+<div class="container">
+    <h1 class="text-center mt-4">Modifier la Facture</h1>
+
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    <form action="{{ route('facture.update', $facture->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+
+        <div class="form-group">
+            <label for="numero_facture">Numéro de Facture :</label>
+            <input type="text" name="numero_facture" id="numero_facture" value="{{ $facture->numero_facture }}" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="date_facture">Date de Facture :</label>
+            <input type="date" name="date_facture" id="date_facture" value="{{ $facture->date_facture }}" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="montant">Montant :</label>
+            <input type="text" name="montant" id="montant" value="{{ $facture->montant }}" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="nom_client">Nom du Client :</label>
+            <input type="text" name="nom_client" id="nom_client" value="{{ $facture->nom_client }}" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="adresse_client">Adresse du Client :</label>
+            <input type="text" name="adresse_client" id="adresse_client" value="{{ $facture->adresse_client }}" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="email_client">Email du Client :</label>
+            <input type="email" name="email_client" id="email_client" value="{{ $facture->email_client }}" class="form-control">
+        </div>
+
+        <!-- Ajoutez d'autres champs de formulaire pour d'autres attributs de la facture ici -->
+
+        <button type="submit" class="btn btn-primary">Enregistrer les Modifications</button>
+    </form>
 </div>
 @endsection

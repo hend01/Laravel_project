@@ -145,13 +145,16 @@
                     <td>{{ $entretien->date_entretien }}</td>
                     <td>{{ $entretien->description }}</td>
                     <td>
-                        <a href="{{ route('entretiens.show', $entretien->id) }}" class="btn btn-info">View</a>
-                        <a href="{{ route('entretiens.edit', $entretien->id) }}" class="btn btn-warning">Edit</a>
-                        <!-- Add delete button with a form for deleting -->
-                        <form action="{{ route('entretiens.destroy', $entretien->id) }}" method="POST" class="d-inline" id="delete-form">
-    @csrf
-    @method('DELETE')
-    <button type="button" class="btn btn-danger" onclick="confirmDelete('{{ route('entretiens.destroy', $entretien->id) }}')">Delete</button>
+                    <div class="d-flex justify-content-between">
+    <a href="{{ route('entretiens.edit', $entretien->id) }}" class="btn btn-warning">Edit</a>
+    <a href="{{ route('admin.facture.upload') }}" class="btn btn-warning">Ajouter facture</a>
+    <form action="{{ route('entretiens.destroy', $entretien->id) }}" method="POST" class="d-inline" id="delete-form">
+        @csrf
+        @method('DELETE')
+        <button type="button" class="btn btn-danger" onclick="confirmDelete('{{ route('entretiens.destroy', $entretien->id) }}')">Delete</button>
+    </form>
+</div>
+
 </form>
 
 

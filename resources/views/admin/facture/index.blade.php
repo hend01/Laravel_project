@@ -1,4 +1,10 @@
+
+
+
+
 @extends('admin.theme')
+
+
 
 
 @section('content')
@@ -115,54 +121,50 @@
         </div>
         <!-- END: Account Menu -->
     </div>
-            <div>
- <h2 class="intro-y text-lg font-medium mt-10" style="background-color:#1e40af;color:white;border-radius: 8px;">
-            <span style="margin-left: 11px;"> Add Entretien </span>
-         </h2>    <!-- Display a table with the list of entretiens -->
-   
-         <div class="container mt-5">
-    
-<form method="POST" action="{{ route('admin.entretiens.store') }}">
-    @csrf
-    <div class="mb-3">
-    <label for="car_id" class="form-label">Sélectionnez la voiture</label>
-    <select class="form-select" id="car_id" name="car_id" >
-        <option value="">Sélectionnez une voiture</option>
-        @foreach($cars as $car)
-            <option value="{{ $car->id }}">{{ $car->id }}</option>
-        @endforeach
-    </select>
-    @error('car_id')
-    <div class="text-danger">{{ $message }}</div>
-    @enderror
-</div>
 
-    <div class="mb-3">
-        <label for="kilometrage" class="form-label">Kilométrage</label>
-        <input type="text" class="form-control" id="kilometrage" name="kilometrage" >
-        @error('kilometrage')
-        <div class="text-danger">{{ $message }}</div>
-    @enderror
-    </div>
-    <div class="mb-3">
-        <label for="date_entretien" class="form-label">Date d'Entretien</label>
-        <input type="date" class="form-control" id="date_entretien" name="date_entretien" >
-        @error('date_entretien')
-        <div class="text-danger">{{ $message }}</div>
-    @enderror
-    </div>
-    <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="description" name="description" rows="3" ></textarea>
-        @error('description')
-        <div class="text-danger">{{ $message }}</div>
-    @enderror
-    </div>
-    <button type="submit" class="btn btn-primary">Créer</button>
-</form>
 
-</div>
-</div>
 
+
+    <h2 class="intro-y text-lg font-medium mt-10" style="background-color:#1e40af;color:white;border-radius: 8px;">
+            <span style="margin-left: 11px;"> Liste des Factures </span>
+         </h2> 
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Numéro de Facture</th>
+                <th>Date de Facture</th>
+                <th>Montant</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($factures as $facture)
+                <tr>
+                    <td>{{ $facture->numero_facture }}</td>
+                    <td>{{ $facture->date_facture }}</td>
+                    <td>{{ $facture->montant }} €</td>
+                    <td>
+                        <a href="{{ route('facture.edit', $facture->id) }}" class="btn btn-primary">Modifier</a>
+                        <form action="{{ route('facture.destroy', $facture->id) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette facture ?')">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <strong>Informations complètes de la Facture :</strong><br>
+                        <strong>Nom du Client :</strong> {{ $facture->nom_client }}<br>
+                        <strong>Adresse du Client :</strong> {{ $facture->adresse_client }}<br>
+                        <strong>Email du Client :</strong> {{ $facture->email_client }}<br>
+                        <!-- Ajoutez d'autres attributs ici en fonction de votre modèle -->
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
 @endsection
