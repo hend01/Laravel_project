@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Avis;
 use App\Models\Evaluation;
 use Illuminate\Http\Request;
 
@@ -68,10 +69,13 @@ class EvaluationController extends Controller
     public function destroy($id)
     {
         $evaluation = Evaluation::find($id);
+        $avis = Avis::where('evaluation_id', $evaluation->id)->first();
+        
+
         if (!$evaluation) {
             return redirect('/evaluations')->with('error', 'Evaluation not found.');
         }
-
+        $avis->delete();
         $evaluation->delete();
 
         return redirect('/evaluations')->with('success', 'The evaluation has been deleted successfully.');

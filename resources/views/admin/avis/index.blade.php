@@ -24,22 +24,26 @@
                 <table id="example" class="table table-striped" style="width:100%">
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Driver</th>
                             <th>Commentaire</th>
                             <th>User</th>
+                            <th>OPTION</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($aviss as $avis)
                             <tr>
+                                <td>{{$avis->id}}</td>
                                 <td>{{ $avis->evaluation->driver->id }}</td>
                                 <td>{{ $avis->commentaire }} </td>
                                 <td>{{ $avis->evaluation->user->name }}</td>
-                                <form action="{{ route('avis.destroy', $avis->id) }}" method="POST" style="display: inline-block;">
+                                <td><form action="{{ route('avis.destroy', $avis->id) }}" method="POST" style="display: inline-block;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger" style="margin-bottom: 4px">Delete</button>
                             </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
