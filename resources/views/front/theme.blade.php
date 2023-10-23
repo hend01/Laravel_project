@@ -84,6 +84,7 @@
                         <!-- Contenu à afficher si aucun utilisateur n'est connecté -->
                         <a data-toggle="modal" class="sign-in fs-12 theme-clr-bg" href="{{ route('login') }}">LOG IN</a>
                     @endguest
+                 
                     
                 </div>
                 <!-- /.Header Topbar -->
