@@ -75,7 +75,9 @@ class EvaluationController extends Controller
         if (!$evaluation) {
             return redirect('/evaluations')->with('error', 'Evaluation not found.');
         }
-        $avis->delete();
+        if($avis){
+            $avis->delete();
+        }
         $evaluation->delete();
 
         return redirect('/evaluations')->with('success', 'The evaluation has been deleted successfully.');
