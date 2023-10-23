@@ -253,6 +253,9 @@
                                 <input type="hidden" name="reclamation_id" value="{{ $reclamation->id }}">
                                 <label for="regular-form-1" class="form-label">Contenu de la réponse</label>
                                 <textarea name="contenu" id="contenu" class="form-control" rows="4"  placeholder="Input text"></textarea>
+                                @if ($errors->has('contenu'))
+                                <p class="text-danger">{{ $errors->first('contenu') }}</p>
+                                @endif
                                 <button type="submit" class="btn btn-primary">Envoyer la réponse</button>
 
                             </div>
