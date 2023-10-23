@@ -97,6 +97,10 @@
                                                     <h5>Réponses :</h5>
                                                     <ul class="reponses-list">
                                                         @foreach ($review->reponses as $reponse)
+                                                        <div class="comment-author">
+                                                            <b class="fn" style="color:dimgray">{{ $reponse->avis->evaluation->user->email }}</b>
+                                                            <span class="says">says:</span>
+                                                        </div><!-- .comment-author -->
                                                             <li class="comment-content">
                                                                 <p>{{ $reponse->contenu }}</p>
                                                             </li>
