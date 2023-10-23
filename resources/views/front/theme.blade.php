@@ -33,7 +33,7 @@
     </head>
     <body id="home">
         <!-- Preloader -->
-        <div id="preloader">
+        {{-- <div id="preloader">
 
             <div class="small1">
                 <div class="small ball smallball1"></div>
@@ -54,11 +54,11 @@
                 <div class="big ball"></div>
             </div>
 
-        </div>	
-        <!-- /.Preloader -->	
+        </div> --}}
+        <!-- /.Preloader -->
 
 
-        <!-- Main Wrapper -->        
+        <!-- Main Wrapper -->
         <main class="wrapper">
 
             <!-- Header -->
@@ -117,7 +117,7 @@
                                                             <ul class="dropdown-menu">
                                                                 <li><a href="#">Submenu</a></li>
                                                                 <li><a href="#">Submenu</a></li>
-                                                                <li><a href="#">Submenu</a></li>                                    
+                                                                <li><a href="#">Submenu</a></li>
                                                             </ul>
                                                         </li>
                                                     </ul>
@@ -133,18 +133,18 @@
                                             <ul class="dropdown-menu">
                                                 <li><a href="blog.html">Blog</a></li>
                                                 <li><a href="blog-left.html">Blog Left</a></li>
-                                                <li><a href="single-blog.html">Single Post</a></li>                                    
+                                                <li><a href="single-blog.html">Single Post</a></li>
                                             </ul>
                                         </li>
-                                        <li>
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >pages </a>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">Reclamation</a>
                                             <ul class="dropdown-menu">
-                                                <li><a href="get-quote.html"> Quote Page </a></li> 
-                                                <li><a href="contact-us-2.html"> Contact-2 Page </a></li>
-                                                <li><a href="404.html"> Error Page </a></li> 
-                                                <li><a href="coming-soon.html"> Coming Soon Page </a></li>
+                                                <li><a href="{{ route('reclamations.create') }}">Ajouter une réclamation</a></li>
+                                                @auth
+                                                <li><a href="{{ route('mes-reclamations') }}">Consulter mes réclamations</a></li>
+                                                @endauth
                                             </ul>
-                                        </li>  
+                                        </li>
                                         <li><span class="search fa fa-search theme-clr transition"> </span></li>
                                     </ul>
                                 </div>
@@ -158,7 +158,7 @@
             <!-- /.Header -->
 
             <!-- Content Wrapper -->
-            <article> 
+            <article>
                 <!-- Banner -->
                 <section class="banner banner-style2 mask-overlay pt-120 white-clr">
                     <div class="pad-50 hidden-xs"></div>
@@ -171,7 +171,7 @@
                         </ul>
                         <h2 class="section-title fs-48 effect animated wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s"> awesome template for <br> <span class="theme-clr"> courier </span> & <span class="theme-clr"> delivery </span> services </h2>
                         <div class="pad-30"></div>
-                        <div class="col-md-8 col-md-offset-2 tracking-form text-left effect animated fadeInUp">     
+                        <div class="col-md-8 col-md-offset-2 tracking-form text-left effect animated fadeInUp">
                             <h2 class="title-1"> track your product </h2> <span class="font2-light fs-12">Now you can track your product easily</span>
                             <div class="row">
                                 <form class="">
@@ -189,7 +189,7 @@
                             </div>
                             <div class="pad-10"></div>
                         </div>
-                    </div>                    
+                    </div>
                 </section>
                 <!-- /.Banner -->
 
@@ -202,7 +202,7 @@
             <!-- Footer -->
             <footer>
                 <div class="footer-main pad-120 white-clr">
-                    <div class="theme-container container">               
+                    <div class="theme-container container">
                         <div class="row">
                             <div class="col-md-3 col-sm-6 footer-widget">
                                 <a href="#"> <img class="logo" alt="#" src="{{asset('assets/img/logo/logo-white.png')}}" />  </a>
@@ -245,10 +245,10 @@
                 </div>
 
                 <div class="footer-bottom">
-                    <div class="theme-container container">               
+                    <div class="theme-container container">
                         <div class="row">
                             <div class="col-md-6 col-sm-6">
-                                <p> © Copyright 2016, All rights reserved </p>                            
+                                <p> © Copyright 2016, All rights reserved </p>
                             </div>
                             <div class="col-md-6 col-sm-6 text-right">
                                 <p> Design and <span class="theme-clr fa fa-heart"></span>  by <a href="#" class="main-clr"> AmineBensaid </a> </p>
@@ -268,13 +268,13 @@
 
         <!-- Popup: Login -->
         <div class="modal fade login-popup" id="login-popup" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-md">                
+            <div class="modal-dialog modal-md">
                 <a class="close close-btn" data-dismiss="modal" aria-label="Close"> x </a>
 
-                <div class="modal-content">   
-                    <div class="login-wrap text-center">                        
+                <div class="modal-content">
+                    <div class="login-wrap text-center">
                         <h2 class="title-3"> sign in </h2>
-                        <p> Sign in to <strong> GO </strong> for getting all details </p>                        
+                        <p> Sign in to <strong> GO </strong> for getting all details </p>
 
                         <div class="login-form clrbg-before">
                             <form class="login">
@@ -284,17 +284,17 @@
                                     <button class="btn-1 " type="submit"> Sign in now </button>
                                 </div>
                             </form>
-                            <a href="#" class="gray-clr"> Forgot Passoword? </a>                            
-                        </div>                        
+                            <a href="#" class="gray-clr"> Forgot Passoword? </a>
+                        </div>
                     </div>
                     <div class="create-accnt">
-                        <a href="#" class="white-clr"> Don’t have an account? </a>  
+                        <a href="#" class="white-clr"> Don’t have an account? </a>
                         <h2 class="title-2"> <a href="#" class="green-clr under-line">Create a free account</a> </h2>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /Popup: Login --> 
+        <!-- /Popup: Login -->
 
         <!-- Search Popup -->
         <div class="search-popup">
@@ -324,7 +324,7 @@
         <script src="{{asset('http://code.jquery.com/jquery-3.4.0.min.js')}}" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
 
 
-        <!-- Slider JS -->        
+        <!-- Slider JS -->
 
 
         <!-- Theme JS -->

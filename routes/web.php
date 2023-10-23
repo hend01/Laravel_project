@@ -7,6 +7,9 @@ use App\Http\Controllers\AvisController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Driver\Driver;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ReclamationController;
+use App\Http\Controllers\ReponseController;
+use App\Http\Controllers\UserrController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -70,3 +73,23 @@ Route::post('/add-evaluation-and-avis/{driverId}', [AvisController::class, 'addE
 Route::get('/driver/details/{driverId}', [DriverController::class, 'showDriverDetails'])->name('driver.details');
 Route::get('/driver/list', [DriverController::class, 'list'])->name('driver.list');
 
+//reclamation 
+Route::get('/reclamation/create', [ReclamationController::class, 'create'])->name('reclamations.create');
+Route::post('/reclamations', [ReclamationController::class, 'store'])->name('reclamations.store');
+Route::get('/mes-reclamations', [ReclamationController::class, 'mesReclamations'])->name('mes-reclamations');
+Route::get('/back/reclamations', [ReclamationController::class, 'index'])->name('reclamations.index');
+Route::delete('/reclamations/{reclamation}', [ReclamationController::class, 'destroy'])->name('reclamations.destroy');
+Route::get('/admin/reponses/create', [ReponseController::class, 'create'])->name('admin.reponse.create');
+Route::post('admin/reponses', [ReponseController::class, 'store'])->name('reponses.store');
+Route::get('admin/reponse/show/{reclamation_id}',[ReponseController::class, 'show'])->name('admin.reponse.show');
+Route::get('admin/reponses/list', [ReponseController::class, 'index'])->name('admin.reponses.index');
+Route::get('/admin/reponses/{reponse}/edit',[ReponseController::class, 'edit'])->name('admin.reponses.edit');
+Route::delete('/admin/reponses/{reponse}', [ReponseController::class, 'destroy'])->name('reponses.destroy');
+Route::put('/admin/reponses/{reponse}', [ReponseController::class, 'update'])->name('admin.reponses.update');
+Route::get('/admin/reponses/{reponse}', [ReponseController::class, 'show'])->name('admin.reponses.show');
+Route::delete('/recl/{reclamation}', [ReclamationController::class, 'destroyfront'])->name('reclamations.destroyfront');
+
+///user back
+Route::get('/back/users', [UserrController::class, 'index'])->name('users.index'); // Afficher la liste des utilisateurs
+Route::get('/back/users/{user}/edit', [UserrController::class, 'edit'])->name('users.edit'); // Formulaire de modification
+Route::put('/back/users/{user}', [UserrController::class, 'update'])->name('users.update'); // Mettre à jour le rôle
