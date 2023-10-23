@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Reclamation::class, 'id_user');
     }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
 }
