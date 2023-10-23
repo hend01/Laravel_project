@@ -7,21 +7,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- Bootstrap Css -->
-        <link rel="stylesheet" type="text/css" href="assets/plugins/bootstrap-3.3.6/css/bootstrap.min.css">        
+        <link rel="stylesheet" type="text/css" href="/assets/plugins/bootstrap-3.3.6/css/bootstrap.min.css">
         <!-- Bootstrap Select Css -->
-        <link rel="stylesheet" type="text/css" href="assets/plugins/bootstrap-select-1.10.0/dist/css/bootstrap-select.min.css">
+        <link rel="stylesheet" type="text/css" href="/assets/plugins/bootstrap-select-1.10.0/dist/css/bootstrap-select.min.css">
         <!-- Fonts Css -->
-        <link rel="stylesheet" type="text/css" href="assets/plugins/font-awesome-4.6.1/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/plugins/font-elegant/elegant.css">
+        <link rel="stylesheet" type="text/css" href="/assets/plugins/font-awesome-4.6.1/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/assets/plugins/font-elegant/elegant.css">
         <!-- OwlCarousel2 Slider Css -->
-        <link rel="stylesheet" type="text/css" href="assets/plugins/owl.carousel.2/assets/owl.carousel.css">
+        <link rel="stylesheet" type="text/css" href="/assets/plugins/owl.carousel.2//assets/owl.carousel.css">
 
 
-        <!-- Animate Css -->       
-        <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
+        <!-- Animate Css -->
+        <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
 
         <!-- Main Css -->
-        <link rel="stylesheet" type="text/css" href="assets/css/theme.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/theme.css">
 
 
         <!--[if lt IE 9]>
@@ -31,7 +31,7 @@
     </head>
     <body id="home">
         <!-- Preloader -->
-        <div id="preloader">
+        {{-- <div id="preloader">
 
             <div class="small1">
                 <div class="small ball smallball1"></div>
@@ -52,11 +52,11 @@
                 <div class="big ball"></div>
             </div>
 
-        </div>	
-        <!-- /.Preloader -->	
+        </div> --}}
+        <!-- /.Preloader -->
 
 
-        <!-- Main Wrapper -->        
+        <!-- Main Wrapper -->
         <main class="wrapper">
 
             <!-- Header -->
@@ -93,7 +93,7 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-logo" href="#"> <img src="assets/img/logo/logo-2.png" alt="logo" /> </a>                                
+                                <a class="navbar-logo" href="#"> <img src="assets/img/logo/logo-2.png" alt="logo" /> </a>
                             </div>
                             <div class="col-md-10 col-sm-10 fs-12">
                                 <div id="navbar" class="collapse navbar-collapse no-pad">
@@ -115,7 +115,7 @@
                                                             <ul class="dropdown-menu">
                                                                 <li><a href="#">Submenu</a></li>
                                                                 <li><a href="#">Submenu</a></li>
-                                                                <li><a href="#">Submenu</a></li>                                    
+                                                                <li><a href="#">Submenu</a></li>
                                                             </ul>
                                                         </li>
                                                     </ul>
@@ -131,18 +131,12 @@
                                             <ul class="dropdown-menu">
                                                 <li><a href="blog.html">Blog</a></li>
                                                 <li><a href="blog-left.html">Blog Left</a></li>
-                                                <li><a href="single-blog.html">Single Post</a></li>                                    
+                                                <li><a href="single-blog.html">Single Post</a></li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >pages </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="get-quote.html"> Quote Page </a></li> 
-                                                <li><a href="contact-us-2.html"> Contact-2 Page </a></li>
-                                                <li><a href="404.html"> Error Page </a></li> 
-                                                <li><a href="coming-soon.html"> Coming Soon Page </a></li>
-                                            </ul>
-                                        </li>  
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >Reclamation </a>
+                                        </li>
                                         <li><span class="search fa fa-search theme-clr transition"> </span></li>
                                     </ul>
                                 </div>
@@ -156,20 +150,20 @@
             <!-- /.Header -->
 
             <!-- Content Wrapper -->
-            <article> 
+            <article>
                 <!-- Banner -->
                 <section class="banner banner-style2 mask-overlay pt-120 white-clr">
                     <div class="pad-50 hidden-xs"></div>
                     <div class="container theme-container rel-div">
                         <img class="pt-10 effect animated fadeInLeft" alt="" src="assets/img/icons/icon-1.png" />
-                        <ul class="list-items fw-600 effect animated wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s">   
+                        <ul class="list-items fw-600 effect animated wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s">
                             <li><a href="#">fast</a></li>
                             <li><a href="#">secured</a></li>
                             <li><a href="#">worldwide</a></li>
                         </ul>
                         <h2 class="section-title fs-48 effect animated wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s"> awesome template for <br> <span class="theme-clr"> courier </span> & <span class="theme-clr"> delivery </span> services </h2>
                         <div class="pad-30"></div>
-                        <div class="col-md-8 col-md-offset-2 tracking-form text-left effect animated fadeInUp">     
+                        <div class="col-md-8 col-md-offset-2 tracking-form text-left effect animated fadeInUp">
                             <h2 class="title-1"> track your product </h2> <span class="font2-light fs-12">Now you can track your product easily</span>
                             <div class="row">
                                 <form class="">
@@ -187,7 +181,7 @@
                             </div>
                             <div class="pad-10"></div>
                         </div>
-                    </div>                    
+                    </div>
                 </section>
                 <!-- /.Banner -->
 
@@ -200,7 +194,7 @@
             <!-- Footer -->
             <footer>
                 <div class="footer-main pad-120 white-clr">
-                    <div class="theme-container container">               
+                    <div class="theme-container container">
                         <div class="row">
                             <div class="col-md-3 col-sm-6 footer-widget">
                                 <a href="#"> <img class="logo" alt="#" src="assets/img/logo/logo-white.png" />  </a>
@@ -243,10 +237,10 @@
                 </div>
 
                 <div class="footer-bottom">
-                    <div class="theme-container container">               
+                    <div class="theme-container container">
                         <div class="row">
                             <div class="col-md-6 col-sm-6">
-                                <p> © Copyright 2016, All rights reserved </p>                            
+                                <p> © Copyright 2016, All rights reserved </p>
                             </div>
                             <div class="col-md-6 col-sm-6 text-right">
                                 <p> Design and <span class="theme-clr fa fa-heart"></span>  by <a href="#" class="main-clr"> AmineBensaid </a> </p>
@@ -266,13 +260,13 @@
 
         <!-- Popup: Login -->
         <div class="modal fade login-popup" id="login-popup" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-md">                
+            <div class="modal-dialog modal-md">
                 <a class="close close-btn" data-dismiss="modal" aria-label="Close"> x </a>
 
-                <div class="modal-content">   
-                    <div class="login-wrap text-center">                        
+                <div class="modal-content">
+                    <div class="login-wrap text-center">
                         <h2 class="title-3"> sign in </h2>
-                        <p> Sign in to <strong> GO </strong> for getting all details </p>                        
+                        <p> Sign in to <strong> GO </strong> for getting all details </p>
 
                         <div class="login-form clrbg-before">
                             <form class="login">
@@ -282,17 +276,17 @@
                                     <button class="btn-1 " type="submit"> Sign in now </button>
                                 </div>
                             </form>
-                            <a href="#" class="gray-clr"> Forgot Passoword? </a>                            
-                        </div>                        
+                            <a href="#" class="gray-clr"> Forgot Passoword? </a>
+                        </div>
                     </div>
                     <div class="create-accnt">
-                        <a href="#" class="white-clr"> Don’t have an account? </a>  
+                        <a href="#" class="white-clr"> Don’t have an account? </a>
                         <h2 class="title-2"> <a href="#" class="green-clr under-line">Create a free account</a> </h2>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /Popup: Login --> 
+        <!-- /Popup: Login -->
 
         <!-- Search Popup -->
         <div class="search-popup">
@@ -308,19 +302,19 @@
         <!-- / Search Popup -->
 
         <!-- Main Jquery JS -->
-        <script src="assets/js/jquery-2.2.4.min.js" type="text/javascript"></script>        
+        <script src="assets/js/jquery-2.2.4.min.js" type="text/javascript"></script>
         <!-- Bootstrap JS -->
-        <script src="assets/plugins/bootstrap-3.3.6/js/bootstrap.min.js" type="text/javascript"></script>    
+        <script src="assets/plugins/bootstrap-3.3.6/js/bootstrap.min.js" type="text/javascript"></script>
         <!-- Bootstrap Select JS -->
-        <script src="assets/plugins/bootstrap-select-1.10.0/dist/js/bootstrap-select.min.js" type="text/javascript"></script>    
+        <script src="assets/plugins/bootstrap-select-1.10.0/dist/js/bootstrap-select.min.js" type="text/javascript"></script>
         <!-- OwlCarousel2 Slider JS -->
-        <script src="assets/plugins/owl.carousel.2/owl.carousel.min.js" type="text/javascript"></script>   
+        <script src="assets/plugins/owl.carousel.2/owl.carousel.min.js" type="text/javascript"></script>
         <!-- Sticky Header -->
         <script src="assets/js/jquery.sticky.js"></script>
         <!-- Wow JS -->
-        <script src="assets/plugins/WOW-master/dist/wow.min.js" type="text/javascript"></script>   
+        <script src="assets/plugins/WOW-master/dist/wow.min.js" type="text/javascript"></script>
 
-        <!-- Slider JS -->        
+        <!-- Slider JS -->
 
 
         <!-- Theme JS -->
