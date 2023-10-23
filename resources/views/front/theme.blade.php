@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- Bootstrap Css -->
-        <link rel="stylesheet" type="text/css" href="{{asset('assets/plugins/bootstrap-3.3.6/css/bootstrap.min.css')}}">        
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/plugins/bootstrap-3.3.6/css/bootstrap.min.css')}}">
         <!-- Bootstrap Select Css -->
         <link rel="stylesheet" type="text/css" href="{{asset('assets/plugins/bootstrap-select-1.10.0/dist/css/bootstrap-select.min.css')}}">
         <!-- Fonts Css -->
@@ -17,7 +17,7 @@
         <link rel="stylesheet" type="text/css" href="{{asset('assets/plugins/owl.carousel.2/assets/owl.carousel.css')}}">
 
 
-        <!-- Animate Css -->       
+        <!-- Animate Css -->
         <link rel="stylesheet" type="text/css" href="{{asset('assets/css/animate.css')}}">
 
         <!-- Main Css -->
@@ -68,15 +68,33 @@
                 <div class="top-bar font2-title1 white-clr">
                     <div class="theme-container container">
                         <div class="row">
-                            <div class="col-md-6 col-sm-5">
+                            <div class="col-md-6 col-sm-12">
                                 <ul class="list-items fs-10">
+                                    <br>
                                     <li><a href="#">sitemap</a></li>
                                     <li class="active"><a href="#">Privacy</a></li>
                                     <li><a href="#">Pricing</a></li>
+                                    <br>
+                                    <br>
+
                                 </ul>
                             </div>
-                            <div class="col-md-6 col-sm-7 fs-12">
-                                <p class="contact-num">  <i class="fa fa-phone"></i> Call us now: <span class="theme-clr"> +880-1756-390-370 </span> </p>
+
+
+                            <div class="col-md-6 col-sm-7 fs-12 text-right"> <!-- Place the content on the right -->
+                                @auth
+                                    <!-- Contenu à afficher si un utilisateur est connecté -->
+                                    <span class="theme-clr">Bonjour {{ auth()->user()->name }}</span>
+                                    <a data-toggle="modal" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Déconnexion</a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                @else
+                                    <!-- Contenu à afficher si aucun utilisateur n'est connecté -->
+                                    <a  class="sign-in fs-12 theme-clr-bg" href="{{ route('login') }}">LOG IN</a>
+                                @endauth
                             </div>
                         </div>
                     </div>
@@ -84,6 +102,7 @@
                         <!-- Contenu à afficher si aucun utilisateur n'est connecté -->
                         <a data-toggle="modal" class="sign-in fs-12 theme-clr-bg" href="{{ route('login') }}">LOG IN</a>
                     @endguest
+                 
                     
                 </div>
                 <!-- /.Header Topbar -->
@@ -99,7 +118,7 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-logo" href="#"> <img src="{{asset('assets/img/logo/logo-2.png')}}" alt="logo" /> </a>                                
+                                <a class="navbar-logo" href="#"> <img src="{{asset('assets/img/logo/logo-2.png')}}" alt="logo" /> </a>
                             </div>
                             <div class="col-md-10 col-sm-10 fs-12">
                                 <div id="navbar" class="collapse navbar-collapse no-pad">
@@ -107,7 +126,7 @@
                                     <li> <a href="{{route('home') }}">Home</a> </li>
 
 
-                                        
+
                                         <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">Reclamation</a>
                                             <ul class="dropdown-menu">
@@ -119,7 +138,7 @@
                                         </li>
                                         <li> <a href="{{route('driver.list') }}">Drivers</a> </li>
 
-                                        
+
                                         <li><span class="search fa fa-search theme-clr transition"> </span></li>
                                     </ul>
                                 </div>
@@ -139,7 +158,7 @@
                     <div class="pad-50 hidden-xs"></div>
                     <div class="container theme-container rel-div">
                         <img class="pt-10 effect animated fadeInLeft" alt="" src="{{asset('assets/img/icons/icon-1.png')}}" />
-                        <ul class="list-items fw-600 effect animated wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s">   
+                        <ul class="list-items fw-600 effect animated wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s">
                             <li><a href="#">fast</a></li>
                             <li><a href="#">secured</a></li>
                             <li><a href="#">worldwide</a></li>
@@ -285,17 +304,17 @@
         <!-- / Search Popup -->
 
         <!-- Main Jquery JS -->
-        <script src="{{asset('assets/js/jquery-2.2.4.min.js')}}" type="text/javascript"></script>        
+        <script src="{{asset('assets/js/jquery-2.2.4.min.js')}}" type="text/javascript"></script>
         <!-- Bootstrap JS -->
-        <script src="{{asset('assets/plugins/bootstrap-3.3.6/js/bootstrap.min.js')}}" type="text/javascript"></script>    
+        <script src="{{asset('assets/plugins/bootstrap-3.3.6/js/bootstrap.min.js')}}" type="text/javascript"></script>
         <!-- Bootstrap Select JS -->
-        <script src="{{asset('assets/plugins/bootstrap-select-1.10.0/dist/js/bootstrap-select.min.js')}}" type="text/javascript"></script>    
+        <script src="{{asset('assets/plugins/bootstrap-select-1.10.0/dist/js/bootstrap-select.min.js')}}" type="text/javascript"></script>
         <!-- OwlCarousel2 Slider JS -->
-        <script src="{{asset('assets/plugins/owl.carousel.2/owl.carousel.min.js')}}" type="text/javascript"></script>   
+        <script src="{{asset('assets/plugins/owl.carousel.2/owl.carousel.min.js')}}" type="text/javascript"></script>
         <!-- Sticky Header -->
         <script src="{{asset('assets/js/jquery.sticky.js')}}"></script>
         <!-- Wow JS -->
-        <script src="{{asset('assets/plugins/WOW-master/dist/wow.min.js')}}" type="text/javascript"></script>   
+        <script src="{{asset('assets/plugins/WOW-master/dist/wow.min.js')}}" type="text/javascript"></script>
         <script src="{{asset('http://code.jquery.com/jquery-3.4.0.min.js')}}" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
 
 
