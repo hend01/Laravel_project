@@ -681,21 +681,20 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="side-nav__devider my-6"></div>
                 <ul>
                     <li>
-                        <a href="javascript:;.html" class="side-menu side-menu--active">
+                        <a href="#" class="side-menu {{ Request::is('/') ? 'side-menu--active' : '' }}">
                             <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
                             <div class="side-menu__title">
                                 Dashboard 
-                                <div class="side-menu__sub-icon transform rotate-180"> <i data-lucide="chevron-down"></i> </div>
                             </div>
                         </a>
                             <li>
-                                <a href="/contacts" class="side-menu">
+                                <a href="/contacts" class="side-menu {{ Request::is('contacts*') ? 'side-menu--active' : '' }}">
                                     <div class="side-menu__icon"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="inbox" data-lucide="inbox" class="lucide lucide-inbox"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline><path d="M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z"></path></svg> </div>
-                                    <div class="side-menu__title"> Inboxxx </div>
+                                    <div class="side-menu__title"> Inbox </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="/cars" class="side-menu">
+                                <a href="/cars" class="side-menu {{ Request::is('cars*') ? 'side-menu--active' : '' }}">
                                     <div class="side-menu__icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="car" data-lucide="car" class="lucide lucide-car">
                                             <path d="M16.5 13.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
@@ -708,7 +707,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </li>
                             
                             <li>
-                                <a href="/drivers" class="side-menu">
+                                <a href="/drivers" class="side-menu {{ Request::is('drivers*') ? 'side-menu--active' : '' }}">
                                     <div class="side-menu__icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="user" data-lucide="user" class="lucide lucide-user">
                                             <path d="M12 13a4 4 0 100-8 4 4 0 000 8z"></path>
@@ -718,6 +717,18 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="side-menu__title"> Drivers management </div>
                                 </a>
                             </li>
+                            <li id="evaluations">
+                    <a href="{{ url('/evaluations') }}" class="side-menu {{ Request::is('evaluations*') ? 'side-menu--active' : '' }}">
+                        <div class="side-menu__icon"> <i data-lucide="star"></i> </div>
+                        <div class="side-menu__title"> Evaluations Management </div>
+                    </a>
+                </li>
+                <li id="avis">
+                    <a href="{{ url('/avis') }}" class="side-menu {{ Request::is('avis*') ? 'side-menu--active' : '' }}">
+                        <div class="side-menu__icon"> <i data-lucide="message-square"></i> </div>
+                        <div class="side-menu__title"> Avis Management </div>
+                    </a>
+                </li>
                             
             </nav>
             <!-- END: Side Menu -->

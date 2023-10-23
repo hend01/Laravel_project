@@ -2,26 +2,28 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>GO Home-2</title>
+        <title>Welcome</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- Bootstrap Css -->
-        <link rel="stylesheet" type="text/css" href="assets/plugins/bootstrap-3.3.6/css/bootstrap.min.css">        
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/plugins/bootstrap-3.3.6/css/bootstrap.min.css')}}">        
         <!-- Bootstrap Select Css -->
-        <link rel="stylesheet" type="text/css" href="assets/plugins/bootstrap-select-1.10.0/dist/css/bootstrap-select.min.css">
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/plugins/bootstrap-select-1.10.0/dist/css/bootstrap-select.min.css')}}">
         <!-- Fonts Css -->
-        <link rel="stylesheet" type="text/css" href="assets/plugins/font-awesome-4.6.1/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="assets/plugins/font-elegant/elegant.css">
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/plugins/font-awesome-4.6.1/css/font-awesome.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/plugins/font-elegant/elegant.css')}}">
         <!-- OwlCarousel2 Slider Css -->
-        <link rel="stylesheet" type="text/css" href="assets/plugins/owl.carousel.2/assets/owl.carousel.css">
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/plugins/owl.carousel.2/assets/owl.carousel.css')}}">
 
 
         <!-- Animate Css -->       
-        <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/css/animate.css')}}">
 
         <!-- Main Css -->
-        <link rel="stylesheet" type="text/css" href="assets/css/theme.css">
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/css/theme.css')}}">
+        <script src="{{asset('https://code.jquery.com/jquery-3.6.0.min.js')}}"></script>
+
 
 
         <!--[if lt IE 9]>
@@ -93,7 +95,7 @@
                                     <span class="icon-bar"></span>
                                     <span class="icon-bar"></span>
                                 </button>
-                                <a class="navbar-logo" href="#"> <img src="assets/img/logo/logo-2.png" alt="logo" /> </a>                                
+                                <a class="navbar-logo" href="#"> <img src="{{asset('assets/img/logo/logo-2.png')}}" alt="logo" /> </a>                                
                             </div>
                             <div class="col-md-10 col-sm-10 fs-12">
                                 <div id="navbar" class="collapse navbar-collapse no-pad">
@@ -161,7 +163,7 @@
                 <section class="banner banner-style2 mask-overlay pt-120 white-clr">
                     <div class="pad-50 hidden-xs"></div>
                     <div class="container theme-container rel-div">
-                        <img class="pt-10 effect animated fadeInLeft" alt="" src="assets/img/icons/icon-1.png" />
+                        <img class="pt-10 effect animated fadeInLeft" alt="" src="{{asset('assets/img/icons/icon-1.png')}}" />
                         <ul class="list-items fw-600 effect animated wow fadeInUp" data-wow-offset="50" data-wow-delay=".20s">   
                             <li><a href="#">fast</a></li>
                             <li><a href="#">secured</a></li>
@@ -203,7 +205,7 @@
                     <div class="theme-container container">               
                         <div class="row">
                             <div class="col-md-3 col-sm-6 footer-widget">
-                                <a href="#"> <img class="logo" alt="#" src="assets/img/logo/logo-white.png" />  </a>
+                                <a href="#"> <img class="logo" alt="#" src="{{asset('assets/img/logo/logo-white.png')}}" />  </a>
                             </div>
                             <div class="col-md-3 col-sm-6 footer-widget">
                                 <h2 class="title-1 fw-900">quick links</h2>
@@ -232,10 +234,10 @@
                                     <li class="wow fadeIn" data-wow-offset="50" data-wow-delay=".35s"> <a href="#" class="fa fa-linkedin"></a> </li>
                                 </ul>
                                 <ul class="payment-icons list-inline">
-                                    <li class="wow fadeIn" data-wow-offset="50" data-wow-delay=".20s"> <a href="#"> <img alt="#" src="assets/img/icons/payment-1.png" /> </a> </li>
-                                    <li class="wow fadeIn" data-wow-offset="50" data-wow-delay=".25s"> <a href="#"> <img alt="#" src="assets/img/icons/payment-2.png" /> </a> </li>
-                                    <li class="wow fadeIn" data-wow-offset="50" data-wow-delay=".30s"> <a href="#"> <img alt="#" src="assets/img/icons/payment-3.png" /> </a> </li>
-                                    <li class="wow fadeIn" data-wow-offset="50" data-wow-delay=".35s"> <a href="#"> <img alt="#" src="assets/img/icons/payment-4.png" /> </a> </li>
+                                    <li class="wow fadeIn" data-wow-offset="50" data-wow-delay=".20s"> <a href="#"> <img alt="#" src="{{asset('assets/img/icons/payment-1.png')}}" /> </a> </li>
+                                    <li class="wow fadeIn" data-wow-offset="50" data-wow-delay=".25s"> <a href="#"> <img alt="#" src="{{asset('assets/img/icons/payment-2.png')}}" /> </a> </li>
+                                    <li class="wow fadeIn" data-wow-offset="50" data-wow-delay=".30s"> <a href="#"> <img alt="#" src="{{asset('assets/img/icons/payment-3.png')}}" /> </a> </li>
+                                    <li class="wow fadeIn" data-wow-offset="50" data-wow-delay=".35s"> <a href="#"> <img alt="#" src="{{asset('assets/img/icons/payment-4.png')}}" /> </a> </li>
                                 </ul>
                             </div>
                         </div>
@@ -308,23 +310,25 @@
         <!-- / Search Popup -->
 
         <!-- Main Jquery JS -->
-        <script src="assets/js/jquery-2.2.4.min.js" type="text/javascript"></script>        
+        <script src="{{asset('assets/js/jquery-2.2.4.min.js')}}" type="text/javascript"></script>        
         <!-- Bootstrap JS -->
-        <script src="assets/plugins/bootstrap-3.3.6/js/bootstrap.min.js" type="text/javascript"></script>    
+        <script src="{{asset('assets/plugins/bootstrap-3.3.6/js/bootstrap.min.js')}}" type="text/javascript"></script>    
         <!-- Bootstrap Select JS -->
-        <script src="assets/plugins/bootstrap-select-1.10.0/dist/js/bootstrap-select.min.js" type="text/javascript"></script>    
+        <script src="{{asset('assets/plugins/bootstrap-select-1.10.0/dist/js/bootstrap-select.min.js')}}" type="text/javascript"></script>    
         <!-- OwlCarousel2 Slider JS -->
-        <script src="assets/plugins/owl.carousel.2/owl.carousel.min.js" type="text/javascript"></script>   
+        <script src="{{asset('assets/plugins/owl.carousel.2/owl.carousel.min.js')}}" type="text/javascript"></script>   
         <!-- Sticky Header -->
-        <script src="assets/js/jquery.sticky.js"></script>
+        <script src="{{asset('assets/js/jquery.sticky.js')}}"></script>
         <!-- Wow JS -->
-        <script src="assets/plugins/WOW-master/dist/wow.min.js" type="text/javascript"></script>   
+        <script src="{{asset('assets/plugins/WOW-master/dist/wow.min.js')}}" type="text/javascript"></script>   
+        <script src="{{asset('http://code.jquery.com/jquery-3.4.0.min.js')}}" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+
 
         <!-- Slider JS -->        
 
 
         <!-- Theme JS -->
-        <script src="assets/js/theme.js" type="text/javascript"></script>
+        <script src="{{asset('assets/js/theme.js')}}" type="text/javascript"></script>
 
     </body>
 </html>
