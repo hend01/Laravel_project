@@ -33,15 +33,14 @@
                     <section class="col-md-9 col-sm-8 pb-50">
                         <article class="post-wrap pb-50">
                             <div class="post-img pb-10">
-                                <a href="#"> <img alt=""
-                                        src="{{ asset('assets/img/driver.jpg') }}"> </a>
+                                <a href="#"> <img alt="" src="{{ asset('assets/img/driver.jpg') }}"> </a>
                             </div>
                             <div class="post-content">
                                 <h6 class="title-2 fs-10">Driver</h6>
-                                <a class="title-1" href="#">{{$driver->first_name . ' ' . $driver->last_name}}</a>
+                                <a class="title-1" href="#">{{ $driver->first_name . ' ' . $driver->last_name }}</a>
                                 <div class="pad-10">
-                                    <h5 style="color: black">Email : {{$driver->email}}</h5>
-                                    <h5 style="color: black">Phone Number : {{$driver->phone_nnumber}}</h5>
+                                    <h5 style="color: black">Email : {{ $driver->email }}</h5>
+                                    <h5 style="color: black">Phone Number : {{ $driver->phone_nnumber }}</h5>
                                 </div>
                             </div>
                         </article>
@@ -106,155 +105,160 @@
                         @endif
                         <!-- Review Submission Form -->
                         <div class="review-form">
-                            <h5 class="title-2"style="color: orange;">Add a Review</h5>
+                            <h5 class="title-2" style="color: orange;">Add a Review</h5>
                             <form method="post">
                                 @csrf
-                                <textarea id="comment" class="comment-content" placeholder="Your opinion" rows="3"></textarea>
+                                <textarea id="comment" class="comment-content" name="comment" placeholder="Your opinion" rows="3"></textarea>
                                 <br><br>
                                 <button type="button" class="btn-1" onclick="saveEvaluation()">Submit Evaluation</button>
                             </form>
-                        </div>
 
-                </div>
-                </section>
+                        @error('comment')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
             </div>
+            </section>
         </div>
-        </div>
-        <!-- /.Blog -->
+    </div>
+    </div>
+    <!-- /.Blog -->
 
-    </article>
-    <!-- /.Content Wrapper -->
+</article>
+<!-- /.Content Wrapper -->
 
-    <div class="modal" tabindex="-1" role="dialog" id="confirmationModal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Confirmation</h5>
+<div class="modal" tabindex="-1" role="dialog" id="confirmationModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmation</h5>
 
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to submit this evaluation without a review ?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" onclick="hideModal()">Cancel</button>
-                    <button type="button" class="btn btn-primary" onclick="submitEvaluation()">Submit</button>
-                </div>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to submit this evaluation without a review ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="hideModal()">Cancel</button>
+                <button type="button" class="btn btn-primary" onclick="submitEvaluation()">Submit</button>
             </div>
         </div>
     </div>
+</div>
 
 
-    <script>
-        function hideModal() {
-            $('#confirmationModal').modal('hide'); // Close the confirmation modal
+<script>
+    function hideModal() {
+        $('#confirmationModal').modal('hide'); // Close the confirmation modal
+    }
+
+    function saveEvaluation() {
+        var comment = $('#comment').val().trim();
+        if (comment === '') {
+            // Open the confirmation modal
+            $('#confirmationModal').modal('show');
+        } else {
+            submitEvaluationAndAvis()
         }
+    }
+    var driverId = {{ $driverId }};
 
-        function saveEvaluation() {
-            var comment = $('#comment').val().trim();
-            if (comment === '') {
-                // Open the confirmation modal
-                $('#confirmationModal').modal('show');
-            } else {
-                submitEvaluationAndAvis()
+    function submitEvaluation() {
+        // This function is called when the user confirms the submission
+        $('#confirmationModal').modal('hide'); // Close the confirmation modal
+        $.ajax({
+            url: '{{ route('evaluations.add', ['driverId' => $driverId]) }}',
+            method: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                rating: ratedIndex,
+                driverId: driverId,
+
+            },
+            dataType: 'json',
+            success: function(response) {
+                // Handle the success response
+                var successMessage = document.createElement("div");
+                successMessage.innerText = response.message;
+                successMessage.classList.add("success-message");
+                document.getElementById("response-message-container").appendChild(successMessage);
+
+            },
+            error: function(xhr, status, error) {
+               var errorMessage = document.createElement("div");
+                errorMessage.innerText = "An error occurred: " + error;
+                errorMessage.classList.add("error-message");
+                document.getElementById("response-message-container").appendChild(errorMessage);
             }
-        }
-        var driverId = {{ $driverId }};
+        });
+    }
 
-        function submitEvaluation() {
-            // This function is called when the user confirms the submission
-            $('#confirmationModal').modal('hide'); // Close the confirmation modal
-            $.ajax({
-                url: '{{ route('evaluations.add', ['driverId' => $driverId]) }}',
-                method: 'POST',
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    rating: ratedIndex,
-                    driverId: driverId,
+    function submitEvaluationAndAvis() {
+        localStorage.setItem('driverId', driverId);
 
-                },
-                dataType: 'json',
-                success: function(response) {
-                    // Handle the success response
-                    var successMessage = document.createElement("div");
-                    successMessage.innerText = response.message;
-                    successMessage.classList.add("success-message");
-                    document.getElementById("response-message-container").appendChild(successMessage);
+        // This function is called when the user confirms the submission
+        $('#confirmationModal').modal('hide'); // Close the confirmation modal
+        $.ajax({
+            url: '/add-evaluation-and-avis/' + driverId,
+            method: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                rating: ratedIndex,
+                driverId: driverId,
+                comment: $('#comment').val().trim()
+            },
+            dataType: 'json',
+            success: function(response) {
+                // Handle the success response
+                var successMessage = document.createElement("div");
+                successMessage.innerText = response.message;
+                successMessage.classList.add("success-message");
+                document.getElementById("response-message-container").appendChild(successMessage);
+            },
+            error: function(xhr, status, error) {
+                console.log('Error:', error);
+                console.log('Response:', xhr.responseText);
+            }
+        });
+    }
 
-                },
-                error: function(xhr, status, error) {
-                    console.log('Error:', error);
-                    console.log('Response:', xhr.responseText);
-                }
-            });
-        }
-
-        function submitEvaluationAndAvis() {
-            localStorage.setItem('driverId', driverId);
-
-            // This function is called when the user confirms the submission
-            $('#confirmationModal').modal('hide'); // Close the confirmation modal
-            $.ajax({
-                url: '/add-evaluation-and-avis/' + driverId,
-                method: 'POST',
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    rating: ratedIndex,
-                    driverId: driverId,
-                    comment: $('#comment').val().trim()
-                },
-                dataType: 'json',
-                success: function(response) {
-                    // Handle the success response
-                    var successMessage = document.createElement("div");
-                    successMessage.innerText = response.message;
-                    successMessage.classList.add("success-message");
-                    document.getElementById("response-message-container").appendChild(successMessage);                    
-                },
-                error: function(xhr, status, error) {
-                    console.log('Error:', error);
-                    console.log('Response:', xhr.responseText);
-                }
-            });
-        }
-
-        var ratedIndex = -1;
+    var ratedIndex = -1;
 
 
-        $(document).ready(function() {
-            resetStarColors();
-            $('.fa-star').on('click', function() {
-                ratedIndex = parseInt($(this).data('index'));
-                localStorage.setItem('ratedIndex', ratedIndex);
-                saveEvaluation()
-            });
-
-            $('.fa-star').mouseover(function() {
-                resetStarColors();
-                var currentIndex = parseInt($(this).data('index'));
-                setStars(currentIndex);
-            });
-
-            $('.fa-star').mouseleave(function() {
-                resetStarColors();
-
-                if (ratedIndex != -1)
-                    setStars(ratedIndex);
-            });
+    $(document).ready(function() {
+        resetStarColors();
+        $('.fa-star').on('click', function() {
+            ratedIndex = parseInt($(this).data('index'));
+            localStorage.setItem('ratedIndex', ratedIndex);
+            saveEvaluation()
         });
 
+        $('.fa-star').mouseover(function() {
+            resetStarColors();
+            var currentIndex = parseInt($(this).data('index'));
+            setStars(currentIndex);
+        });
+
+        $('.fa-star').mouseleave(function() {
+            resetStarColors();
+
+            if (ratedIndex != -1)
+                setStars(ratedIndex);
+        });
+    });
 
 
-        function setStars(max) {
-            for (var i = 0; i <= max; i++) {
-                $('.fa-star:eq(' + i + ')').css('color', 'orange');
-            }
+
+    function setStars(max) {
+        for (var i = 0; i <= max; i++) {
+            $('.fa-star:eq(' + i + ')').css('color', 'orange');
         }
+    }
 
-        function resetStarColors() {
-            // Réinitialisez la couleur de toutes les étoiles à noire
-            $('.fa-star').css('color', 'black');
-        }
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    function resetStarColors() {
+        // Réinitialisez la couleur de toutes les étoiles à noire
+        $('.fa-star').css('color', 'black');
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 @endsection
