@@ -46,7 +46,7 @@ class EvaluationController extends Controller
             return response()->json(['message' => 'Sorry , you have already rated this driver.']);
         } else{
             $evaluation->save();
-            return response()->json(['message' => 'Evaluation saved successfully']);
+            return response()->json(['message' => 'Evaluation added successfully']);
 
         }
     }
