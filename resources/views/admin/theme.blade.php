@@ -740,6 +740,18 @@ License: You must have a valid license purchased only from themeforest(the above
     <div class="side-menu__title"> Reponse Management </div>
     </a>
 </li>
+<li id="logout">
+    <a class="side-menu" href="{{ route('logout') }}"
+       onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+        <div class="side-menu__icon"><i data-lucide="log-out"></i></div>
+        <div class="side-menu__title">{{ __('Logout') }}</div>
+    </a>
+
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
+    </form>
+</li>
 
  </nav>
  <!-- END: Side Menu -->

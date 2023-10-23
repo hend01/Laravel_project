@@ -32,7 +32,7 @@ Route::get('/contacts', function () {
     return view('admin.contact');
 });
 // Route::get('/addCar', 'CarController@create')->name('cars.create');
-Route::get('/addCar', [CarController::class, 'create'])->name('cars.addCar'); 
+Route::get('/addCar', [CarController::class, 'create'])->name('cars.addCar');
 Route::post('/addCar', [CarController::class, 'addCar'])->name('cars.addCar');
 Route::delete('/cars/{id}', [CarController::class, 'deleteCar'])->name('cars.deleteCar');
 
@@ -42,9 +42,9 @@ Route::put('/cars/{car}', [CarController::class, 'updateCar'])->name('cars.updat
 Route::get('/index', function () {
     return view('front.index');
 });
-Route::get('/cars', [CarController::class, 'index'])->middleware('auth'); 
-Route::get('/drivers', [DriverController::class, 'index'])->middleware('auth'); 
-Route::get('/addDriver', [DriverController::class, 'create'])->name('drivers.addDriver'); 
+Route::get('/cars', [CarController::class, 'index'])->middleware('auth');
+Route::get('/drivers', [DriverController::class, 'index'])->middleware('auth');
+Route::get('/addDriver', [DriverController::class, 'create'])->name('drivers.addDriver');
 Route::post('/addDriver', [DriverController::class, 'addDriver'])->name('drivers.addDriver');
 Route::delete('/drivers/{id}', [DriverController::class, 'deleteDriver'])->name('drivers.deleteDriver');
 Route::get('/drivers/{driver}', [DriverController::class, 'editDriver'])->name('drivers.edit'); // Afficher le formulaire de mise à jour
@@ -73,7 +73,7 @@ Route::post('/add-evaluation-and-avis/{driverId}', [AvisController::class, 'addE
 Route::get('/driver/details/{driverId}', [DriverController::class, 'showDriverDetails'])->name('driver.details');
 Route::get('/driver/list', [DriverController::class, 'list'])->name('driver.list');
 
-//reclamation 
+//reclamation
 Route::get('/reclamation/create', [ReclamationController::class, 'create'])->name('reclamations.create');
 Route::post('/reclamations', [ReclamationController::class, 'store'])->name('reclamations.store');
 Route::get('/mes-reclamations', [ReclamationController::class, 'mesReclamations'])->name('mes-reclamations');
@@ -88,6 +88,9 @@ Route::delete('/admin/reponses/{reponse}', [ReponseController::class, 'destroy']
 Route::put('/admin/reponses/{reponse}', [ReponseController::class, 'update'])->name('admin.reponses.update');
 Route::get('/admin/reponses/{reponse}', [ReponseController::class, 'show'])->name('admin.reponses.show');
 Route::delete('/recl/{reclamation}', [ReclamationController::class, 'destroyfront'])->name('reclamations.destroyfront');
+Route::get('/reclamations/export', [ReclamationController::class, 'exportExcel'])->name('reclamations.export.excel');
+Route::get('/reclamations/export-pdf', [ReclamationController::class, 'exportPDF'])->name('reclamations.export.pdf');
+
 
 ///user back
 Route::get('/back/users', [UserrController::class, 'index'])->name('users.index'); // Afficher la liste des utilisateurs

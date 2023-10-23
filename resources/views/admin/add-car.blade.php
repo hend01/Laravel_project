@@ -20,7 +20,7 @@
         <div class="intro-x relative mr-3 sm:mr-6">
             <div class="search hidden sm:block">
                 <input type="text" class="search__input form-control border-transparent" placeholder="Search...">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="search" data-lucide="search" class="lucide lucide-search search__icon dark:text-slate-500"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> 
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="search" data-lucide="search" class="lucide lucide-search search__icon dark:text-slate-500"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             </div>
             <a class="notification sm:hidden" href="#"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="search" data-lucide="search" class="lucide lucide-search notification__icon dark:text-slate-500"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> </a>
             <div class="search-result">
@@ -117,7 +117,7 @@
                         </div>
                         <div class="ml-2 overflow-hidden">
                             <div class="flex items-center">
-                                <a href="javascript:;" class="font-medium truncate mr-5">Kate Winslet</a> 
+                                <a href="javascript:;" class="font-medium truncate mr-5">Kate Winslet</a>
                                 <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">01:10 PM</div>
                             </div>
                             <div class="w-full truncate text-slate-500 mt-0.5">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 20</div>
@@ -130,7 +130,7 @@
                         </div>
                         <div class="ml-2 overflow-hidden">
                             <div class="flex items-center">
-                                <a href="javascript:;" class="font-medium truncate mr-5">Al Pacino</a> 
+                                <a href="javascript:;" class="font-medium truncate mr-5">Al Pacino</a>
                                 <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">03:20 PM</div>
                             </div>
                             <div class="w-full truncate text-slate-500 mt-0.5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500</div>
@@ -143,7 +143,7 @@
                         </div>
                         <div class="ml-2 overflow-hidden">
                             <div class="flex items-center">
-                                <a href="javascript:;" class="font-medium truncate mr-5">Robert De Niro</a> 
+                                <a href="javascript:;" class="font-medium truncate mr-5">Robert De Niro</a>
                                 <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">01:10 PM</div>
                             </div>
                             <div class="w-full truncate text-slate-500 mt-0.5">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 20</div>
@@ -156,7 +156,7 @@
                         </div>
                         <div class="ml-2 overflow-hidden">
                             <div class="flex items-center">
-                                <a href="javascript:;" class="font-medium truncate mr-5">Denzel Washington</a> 
+                                <a href="javascript:;" class="font-medium truncate mr-5">Denzel Washington</a>
                                 <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">01:10 PM</div>
                             </div>
                             <div class="w-full truncate text-slate-500 mt-0.5">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 20</div>
@@ -169,7 +169,7 @@
                         </div>
                         <div class="ml-2 overflow-hidden">
                             <div class="flex items-center">
-                                <a href="javascript:;" class="font-medium truncate mr-5">Leonardo DiCaprio</a> 
+                                <a href="javascript:;" class="font-medium truncate mr-5">Leonardo DiCaprio</a>
                                 <div class="text-xs text-slate-400 ml-auto whitespace-nowrap">01:10 PM</div>
                             </div>
                             <div class="w-full truncate text-slate-500 mt-0.5">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem </div>
@@ -217,7 +217,8 @@
 
                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                          @csrf
-                     </form>                    </li>
+                     </form>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -236,7 +237,7 @@
             <div class="col-md-8">
                 <!-- BEGIN: Input -->
                 <div class="intro-y box">
-                
+
                     <div id="input" class="p-5">
                         <div class="preview" style="display: block;">
 
@@ -288,10 +289,10 @@ Add Car                                        </h2>
                                             <label for="license_plate" class="form-label">Driver</label>
                                             <select name="driver_id" class="form-control" >
                                                 @foreach($drivers as $driver)
-                                                <option value="{{$driver->id}}"> {{$driver->first_name}} {{$driver->last_name}}</option>                
+                                                <option value="{{$driver->id}}"> {{$driver->first_name}} {{$driver->last_name}}</option>
                                             @endforeach
-                                            </select>    
-                                           
+                                            </select>
+
                                         </div>
                                         <div class="text-right mt-5">
                                             <button type="button" class="btn btn-outline-secondary w-24 mr-1">Annuler</button>
@@ -300,11 +301,11 @@ Add Car                                        </h2>
                                     </div>
                                 </div>
                             </form>
-                            
-                            
+
+
                     </div>
                 </div>
-               
+
             </div>
             <div class="col-md-2"></div>
             </div>

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\Reclamation;
-
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ReclamationsExport;
+use PDF;
 
 use Illuminate\Http\Request;
 
@@ -86,5 +88,20 @@ class ReclamationController extends Controller
 
         return view('front.reclamation.show', compact('reclamations'));
     }
+
+    public function exportExcel()
+    {
+        return Excel::download(new ReclamationsExport, 'reclamations.xlsx');
+    }
+
+    public function exportPDF()
+    {
+        $reclamations = Reclamation::all();
+        $pdf = PDF::loadView('admin.reclamation.pdf', compact('reclamations'));
+
+        return $pdf->download('reclamations.pdf');
+    }
+
+
 
 }
