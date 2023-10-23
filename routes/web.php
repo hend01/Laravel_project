@@ -7,6 +7,7 @@ use SebastianBergmann\CodeCoverage\Driver\Driver;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ReclamationController;
 use App\Http\Controllers\ReponseController;
+use App\Http\Controllers\UserrController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -71,3 +72,7 @@ Route::put('/admin/reponses/{reponse}', [ReponseController::class, 'update'])->n
 Route::get('/admin/reponses/{reponse}', [ReponseController::class, 'show'])->name('admin.reponses.show');
 Route::delete('/recl/{reclamation}', [ReclamationController::class, 'destroyfront'])->name('reclamations.destroyfront');
 
+///user back
+Route::get('/back/users', [UserrController::class, 'index'])->name('users.index'); // Afficher la liste des utilisateurs
+Route::get('/back/users/{user}/edit', [UserrController::class, 'edit'])->name('users.edit'); // Formulaire de modification
+Route::put('/back/users/{user}', [UserrController::class, 'update'])->name('users.update'); // Mettre à jour le rôle
