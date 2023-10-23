@@ -69,4 +69,22 @@ class ReclamationController extends Controller
         return redirect()->route('reclamations.index')
             ->with('success', 'Reclamation supprimée avec succès.');
     }
+
+    public function destroyfront(Reclamation $reclamation)
+    {
+        $reclamation->delete();
+
+        return redirect()->route('home')
+            ->with('success', 'Reclamation supprimée avec succès.');
+    }
+
+
+    public function mesReclamations()
+    {
+        $user = auth()->user();
+        $reclamations = $user->reclamations;
+
+        return view('front.reclamation.show', compact('reclamations'));
+    }
+
 }

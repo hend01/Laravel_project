@@ -19,6 +19,12 @@
                     <p class="ml-2">{{ $reponse->reclamation->sujet }}</p>
                 </div>
                 <div class="mb-3">
+                    <strong class="text-gray-600">Utilisateur associée :</strong>
+                    <p class="ml-2">nom : {{ $reponse->reclamation->user->name }}  </p>
+                    <p class="ml-2">email : {{ $reponse->reclamation->user->email }} </p>
+
+                </div>
+                <div class="mb-3">
                     <strong class="text-gray-600">Description :</strong>
                     <p class="ml-2">{{ $reponse->reclamation->description }}</p>
                 </div>

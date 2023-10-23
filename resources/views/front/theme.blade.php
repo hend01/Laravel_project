@@ -134,8 +134,14 @@
                                                 <li><a href="single-blog.html">Single Post</a></li>
                                             </ul>
                                         </li>
-                                        <li>
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" >Reclamation </a>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">Reclamation</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="{{ route('reclamations.create') }}">Ajouter une réclamation</a></li>
+                                                @auth
+                                                <li><a href="{{ route('mes-reclamations') }}">Consulter mes réclamations</a></li>
+                                                @endauth
+                                            </ul>
                                         </li>
                                         <li><span class="search fa fa-search theme-clr transition"> </span></li>
                                     </ul>

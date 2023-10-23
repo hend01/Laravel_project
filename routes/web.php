@@ -58,6 +58,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/reclamation/create', [ReclamationController::class, 'create'])->name('reclamations.create');
 Route::post('/reclamations', [ReclamationController::class, 'store'])->name('reclamations.store');
+Route::get('/mes-reclamations', [ReclamationController::class, 'mesReclamations'])->name('mes-reclamations');
 Route::get('/back/reclamations', [ReclamationController::class, 'index'])->name('reclamations.index');
 Route::delete('/reclamations/{reclamation}', [ReclamationController::class, 'destroy'])->name('reclamations.destroy');
 Route::get('/admin/reponses/create', [ReponseController::class, 'create'])->name('admin.reponse.create');
@@ -68,4 +69,5 @@ Route::get('/admin/reponses/{reponse}/edit',[ReponseController::class, 'edit'])-
 Route::delete('/admin/reponses/{reponse}', [ReponseController::class, 'destroy'])->name('reponses.destroy');
 Route::put('/admin/reponses/{reponse}', [ReponseController::class, 'update'])->name('admin.reponses.update');
 Route::get('/admin/reponses/{reponse}', [ReponseController::class, 'show'])->name('admin.reponses.show');
+Route::delete('/recl/{reclamation}', [ReclamationController::class, 'destroyfront'])->name('reclamations.destroyfront');
 
