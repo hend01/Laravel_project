@@ -13,6 +13,13 @@ class produitController extends Controller
         return view('admin.produit.add');
 
     }
+
+    public function show()
+    {
+        $produits = produit::all();
+        return view('admin.produit.show', compact('produits'));
+
+    }
     public function get( $id){
         $produit = produit::findOrFail($id);
        
@@ -44,7 +51,7 @@ class produitController extends Controller
             ]);
             $this->sendTestEmail("produit added");
 
-            return redirect()->route('home')
+            return redirect()->route('produits.show')
                 ->with('success', 'Done.');
         } else {
             return redirect()->route('login')->with('error', 'Error.');
@@ -57,7 +64,7 @@ class produitController extends Controller
             if ($userId==="admin") {
                 $produit->delete();
             }
-            return redirect()->route('produit.index')->with('success', 'produit deleted successfully.');
+            return redirect()->route('produits.show')->with('success', 'produit deleted successfully.');
         }
         return redirect()->route('home')->with('success', 'produit deleted successfully.');
     }
@@ -67,7 +74,8 @@ class produitController extends Controller
         $produit = produit::find($id);
 
         if (!$produit) {
-            return redirect('/produits')->with('error', 'produit introuvable.');
+            return redirect()->route('produits.show')
+            ->with('error', 'produit introuvable.');
         }
 
         return view('admin.produit.get', compact('produit'));
@@ -85,7 +93,8 @@ class produitController extends Controller
         $produit = produit::find($id);
 
         if (!$produit) {
-            return redirect('/produits')->with('error', 'produit not found.');
+            return redirect()->route('produits.show')
+            ->with('error', 'produit not found.');
         }
 
         $produit->name = $validatedData['name'];
@@ -95,7 +104,8 @@ class produitController extends Controller
 
         $produit->save();
 
-        return redirect('/produits')->with('success', 'produit has been updated successfully.');
+        return redirect()->route('produits.show')
+        ->with('success', 'produit has been updated successfully.');
     }
 
 

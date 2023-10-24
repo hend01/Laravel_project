@@ -780,6 +780,18 @@ License: You must have a valid license purchased only from themeforest(the above
     <div class="side-menu__title"> Reponse Management </div>
     </a>
 </li>
+<li id="reponse">
+    <a href="{{ url('/produitss') }}" class="side-menu {{ Request::is('produitss*') ? 'side-menu--active' : '' }}">
+    <div class="side-menu__icon"> <i data-lucide="clipboard"></i>    </div>
+    <div class="side-menu__title"> Add Produit </div>
+    </a>
+</li>
+<li id="reponse">
+    <a href="{{ url('/eventss') }}" class="side-menu {{ Request::is('eventss*') ? 'side-menu--active' : '' }}">
+    <div class="side-menu__icon"> <i data-lucide="clipboard"></i>    </div>
+    <div class="side-menu__title"> Add Event </div>
+    </a>
+</li>
 <li id="logout">
     <a class="side-menu" href="{{ route('logout') }}"
        onclick="event.preventDefault();
