@@ -73,6 +73,9 @@ Route::post('/add-evaluation-and-avis/{driverId}', [AvisController::class, 'addE
 Route::get('/driver/details/{driverId}', [DriverController::class, 'showDriverDetails'])->name('driver.details');
 Route::get('/driver/list', [DriverController::class, 'list'])->name('driver.list');
 
+Route::get('/carsList', [CarController::class, 'listCars'])->name('cars.listCars');
+
+
 
 // front reclamation
 Route::delete('/recl/{reclamation}', [ReclamationController::class, 'destroyfront'])->name('reclamations.destroyfront')->middleware('auth');

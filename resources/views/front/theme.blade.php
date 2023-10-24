@@ -137,6 +137,7 @@
                                             </ul>
                                         </li>
                                         <li> <a href="{{route('driver.list') }}">Drivers</a> </li>
+                                        <li> <a href="{{route('cars.listCars') }}">Cars</a> </li>
 
 
                                         <li><span class="search fa fa-search theme-clr transition"> </span></li>
