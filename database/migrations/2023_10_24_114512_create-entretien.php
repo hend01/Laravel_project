@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('entretiens', function (Blueprint $table) {
             $table->id();
-            
+
             $table->unsignedBigInteger('car_id'); // Change 'vehicle_id' to 'car_id'
             $table->integer('kilometrage');
             $table->date('date_entretien');
@@ -22,12 +22,12 @@ return new class extends Migration
 
             // Update foreign key reference to 'cars' table
             $table->foreign('car_id')
-                ->references('id')
+            ->references('id')
                 ->on('cars')
                 ->onDelete('cascade'); // Delete associated maintenance records if the car is deleted
         });
     }
-    
+
     /**
      * Reverse the migrations.
      */

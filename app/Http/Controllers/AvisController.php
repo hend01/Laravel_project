@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Avis;
 use App\Models\driver;
 use App\Models\Evaluation;
-
+use App\Models\ReponseAvis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -23,7 +23,13 @@ class AvisController extends Controller
         if (!$avis) {
             return redirect('/avis')->with('error', 'Avis not found.');
         }
+        // Récupérez toutes les réponses associées à l'avis
+        $reponses = ReponseAvis::where('avis_id', $avis->id)->get();
 
+        // Supprimez chaque réponse
+        foreach ($reponses as $reponse) {
+            $reponse->delete();
+        }
         $avis->delete();
 
         return redirect('/avis')->with('success', 'Avis has been deleted successfully.');

@@ -48,7 +48,7 @@ Route::put('/cars/{car}', [CarController::class, 'updateCar'])->name('cars.updat
 
 Route::get('/index', function () {
     return view('front.index');
-});
+})->name('index');
 Route::get('/cars', [CarController::class, 'index'])->middleware('auth');
 Route::get('/drivers', [DriverController::class, 'index'])->middleware('auth');
 Route::get('/addDriver', [DriverController::class, 'create'])->name('drivers.addDriver');
@@ -72,6 +72,7 @@ Route::get('/blog/{driverId}', [AvisController::class, 'showDriverReviews'])->na
 Route::post('/add-evaluation-and-avis/{driverId}', [AvisController::class, 'addEvaluationAndAvis'])->name('avis.addAvisAndEvaluation')->middleware('auth');
 Route::get('/driver/details/{driverId}', [DriverController::class, 'showDriverDetails'])->name('driver.details');
 Route::get('/driver/list', [DriverController::class, 'list'])->name('driver.list');
+Route::post('/driver/details/{driverId}/reponse', [ReponseAvisController::class, 'store'])->name('reponse.create');
 
 Route::get('/carsList', [CarController::class, 'listCars'])->name('cars.listCars');
 
