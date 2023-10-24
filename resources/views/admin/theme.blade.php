@@ -833,6 +833,29 @@ License: You must have a valid license purchased only from themeforest(the above
  $(document).ready(function() {
  $('#example').DataTable();
  });
+ function confirmDelete(deleteUrl) {
+    if (confirm("Êtes-vous sûr de vouloir supprimer cet entretien ?")) {
+        fetch(deleteUrl, {
+            method: 'DELETE',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}', // Assurez-vous d'avoir le jeton CSRF disponible
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => {
+            if (response.status === 200) {
+                // Suppression réussie
+                alert('Entretien supprimé avec succès');
+                location.reload(); // Actualisez la page
+            } else {
+                // Gestion des erreurs ici, si nécessaire
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    }
+}
  </script>
  <!-- END: JS Assets-->
  </body>

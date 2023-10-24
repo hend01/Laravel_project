@@ -19,5 +19,5 @@ class CheckAdminRole
             return $next($request);
         }
 
-        return redirect()->route('home')->with('error', 'Accès non autorisé.');    }
+        return redirect()->route('index')->with('error', 'Accès non autorisé.');    }
 }

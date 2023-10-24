@@ -46,7 +46,7 @@ class eventController extends Controller
             ]);
             $event->produit()->attach($produits);
             $this->sendTestEmail("produit added");
-            // $this->sendSMS("produit added");
+             $this->sendSMS("produit added");
 
             return redirect()->route('events.show')
                 ->with('success', 'Done.');
