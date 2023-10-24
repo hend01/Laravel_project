@@ -33,15 +33,14 @@
                     <section class="col-md-9 col-sm-8 pb-50">
                         <article class="post-wrap pb-50">
                             <div class="post-img pb-10">
-                                <a href="#"> <img alt=""
-                                        src="{{ asset('assets/img/driver.jpg') }}"> </a>
+                                <a href="#"> <img alt="" src="{{ asset('assets/img/driver.jpg') }}"> </a>
                             </div>
                             <div class="post-content">
                                 <h6 class="title-2 fs-10">Driver</h6>
-                                <a class="title-1" href="#">{{$driver->first_name . ' ' . $driver->last_name}}</a>
+                                <a class="title-1" href="#">{{ $driver->first_name . ' ' . $driver->last_name }}</a>
                                 <div class="pad-10">
-                                    <h5 style="color: black">Email : {{$driver->email}}</h5>
-                                    <h5 style="color: black">Phone Number : {{$driver->phone_nnumber}}</h5>
+                                    <h5 style="color: black">Email : {{ $driver->email }}</h5>
+                                    <h5 style="color: black">Phone Number : {{ $driver->phone_nnumber }}</h5>
                                 </div>
                             </div>
                         </article>
@@ -76,8 +75,8 @@
                                                             <img class="avatar"
                                                                 src="{{ asset('assets/img/flickr/flickr-feed.jpg') }}"
                                                                 alt="avtar">
-                                                            <b class="fn">{{ $review->evaluation_id }}</b> <span
-                                                                class="says">says:</span>
+                                                            <b class="fn">{{ $review->evaluation->user->email }}</b>
+                                                            <span class="says">says:</span>
                                                         </div><!-- .comment-author -->
 
                                                         <div class="comment-metadata">
@@ -93,6 +92,35 @@
                                                     </div><!-- .comment-content -->
                                                 </article><!-- .comment-body -->
                                             </li><!-- #comment-## -->
+                                            @if ($review->reponses->count() > 0)
+                                                <div class="reponses">
+                                                    <h5>Réponses :</h5>
+                                                    <ul class="reponses-list">
+                                                        @foreach ($review->reponses as $reponse)
+                                                        <div class="comment-author">
+                                                            <b class="fn" style="color:dimgray">{{ $reponse->avis->evaluation->user->email }}</b>
+                                                            <span class="says">says:</span>
+                                                        </div><!-- .comment-author -->
+                                                            <li class="comment-content">
+                                                                <p>{{ $reponse->contenu }}</p>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endif
+                                            <br><br>
+                                            <!-- Formulaire pour la réponse -->
+                                            <div class="comment-reply-form">
+                                                <form method="post"
+                                                    action="{{ route('reponse.create', ['driverId' => $review->evaluation->driver->id]) }}">
+                                                    @csrf
+                                                    <input type="hidden" name="review_id" value="{{ $review->id }}">
+                                                    <textarea class="comment-content" style="color: black" name="reponse" placeholder="Your reply"></textarea>
+                                                    <div class="reply">
+                                                    <button type="submit" class="btn btn-info">Reply</button>
+                                                </div>
+                                                </form>
+                                            </div>
                                         @endforeach
                                     </ul>
 
@@ -106,15 +134,18 @@
                         @endif
                         <!-- Review Submission Form -->
                         <div class="review-form">
-                            <h5 class="title-2"style="color: orange;">Add a Review</h5>
+                            <h5 class="title-2" style="color: orange;">Add a Review</h5>
                             <form method="post">
                                 @csrf
-                                <textarea id="comment" class="comment-content" placeholder="Your opinion" rows="3"></textarea>
+                                <textarea id="comment" class="comment-content" name="comment" placeholder="Your opinion" rows="3"></textarea>
                                 <br><br>
                                 <button type="button" class="btn-1" onclick="saveEvaluation()">Submit Evaluation</button>
                             </form>
-                        </div>
 
+                            @error('comment')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                 </div>
                 </section>
             </div>
@@ -182,8 +213,10 @@
 
                 },
                 error: function(xhr, status, error) {
-                    console.log('Error:', error);
-                    console.log('Response:', xhr.responseText);
+                    var errorMessage = document.createElement("div");
+                    errorMessage.innerText = "An error occurred: " + error;
+                    errorMessage.classList.add("error-message");
+                    document.getElementById("response-message-container").appendChild(errorMessage);
                 }
             });
         }
@@ -208,7 +241,7 @@
                     var successMessage = document.createElement("div");
                     successMessage.innerText = response.message;
                     successMessage.classList.add("success-message");
-                    document.getElementById("response-message-container").appendChild(successMessage);                    
+                    document.getElementById("response-message-container").appendChild(successMessage);
                 },
                 error: function(xhr, status, error) {
                     console.log('Error:', error);

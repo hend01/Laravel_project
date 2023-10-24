@@ -8,14 +8,14 @@
             <nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Application</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Reclamation</li>
+                    <li class="breadcrumb-item active" aria-current="page">Users</li>
                 </ol>
             </nav>
             <!-- END: Breadcrumb -->
         </div>
         <!-- END: Top Bar -->
         <h2 class="intro-y text-lg font-medium mt-10" style="background-color:#1e40af;color:white;border-radius: 8px;">
-            <span style="margin-left: 11px;"> Liste des Réclamations </span>
+            <span style="margin-left: 11px;"> Liste des utilisateurs </span>
         </h2>
         <div class="grid grid-cols-12 gap-6 mt-5">
 

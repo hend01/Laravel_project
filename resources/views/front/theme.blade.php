@@ -98,6 +98,12 @@
                             </div>
                         </div>
                     </div>
+                    @guest
+                        <!-- Contenu à afficher si aucun utilisateur n'est connecté -->
+                        <a data-toggle="modal" class="sign-in fs-12 theme-clr-bg" href="{{ route('login') }}">LOG IN</a>
+                    @endguest
+                 
+                    
                 </div>
                 <!-- /.Header Topbar -->
 
@@ -131,9 +137,15 @@
                                             </ul>
                                         </li>
                                         <li> <a href="{{route('driver.list') }}">Drivers</a> </li>
+<<<<<<< HEAD
                                         <li> <a href="{{route('events.index') }}">events</a> </li>
                                         <li> <a href="{{route('produits.index') }}">produits</a> </li>
+=======
+                                        <li> <a href="{{route('agence.list') }}">Agences</a> </li>
+                                        <li> <a href="{{route('cars.listCars') }}">Cars</a> </li>
+>>>>>>> d30e221e2ebc730a4bdbf8936deace5b147426de
 
+                                        <li> <a href="/chatify">Chat</a> </li>
 
                                         <li><span class="search fa fa-search theme-clr transition"> </span></li>
                                     </ul>
