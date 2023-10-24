@@ -64,13 +64,13 @@ class AvisController extends Controller
 
         // Check if the user has already rated the driver
         $rating = $request->input('rating');
-        $comment = $request->input('comment');
-        Validator::make($request->all(), [
-            'comment' => 'required|string|min:2|max:255',
+     
+        $request->validate(['comment' => 'required|string|min:10|max:255',
+            'comment' => 'required|string|min:10',
         ], [
             'comment.required' => 'Comment field is required.',
-            'comment.min' => 'Comment field must have at least 2 characters.',
-        ])->validate();
+            'comment.min' => 'Comment field must have at least 10 characters.',
+        ]);
        
         // Perform the necessary actions to add an evaluation and avis simultaneously
         // Add evaluation (similar to your existing 'add-evaluation' method)
@@ -82,11 +82,11 @@ class AvisController extends Controller
 
         // Add avis
         $avis = new Avis();
-        $avis->commentaire = $comment;
+        $avis->commentaire = $request->input('comment');
         $avis->evaluation_id = $evaluation->id; // Link avis to the newly created evaluation
         $avis->save();
-
         return response()->json(['message' => 'Evaluation and Avis added successfully']);
+        
         }
        
 }

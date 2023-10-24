@@ -58,6 +58,25 @@
                             <br>
 
                         </form>
+                        <div class="review-form">
+                            <h5 class="title-2" style="color: orange;">Add a Review</h5>
+                            <form method="post">
+                                @csrf
+                                <textarea id="comment" class="comment-content" name="comment" placeholder="Your opinion" rows="3"></textarea>
+                                <br><br>
+                                <button type="button" class="btn-1" onclick="saveEvaluation()">Submit
+                                    Evaluation</button>
+                            </form>
+
+                            @error('comment')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+
+                        </div>
+                        <hr>
+                        <div id="success-message" class="alert alert-success" style="display: none;"></div>
+
+                        <div id="validation-errors" class="alert alert-danger" style="display: none;"></div>
 
                         <div id="response-message-container"></div>
                         @if ($reviews->count() > 0)
@@ -97,10 +116,11 @@
                                                     <h5>Réponses :</h5>
                                                     <ul class="reponses-list">
                                                         @foreach ($review->reponses as $reponse)
-                                                        <div class="comment-author">
-                                                            <b class="fn" style="color:dimgray">{{ $reponse->avis->evaluation->user->email }}</b>
-                                                            <span class="says">says:</span>
-                                                        </div><!-- .comment-author -->
+                                                            <div class="comment-author">
+                                                                <b class="fn"
+                                                                    style="color:dimgray">{{ $reponse->avis->evaluation->user->email }}</b>
+                                                                <span class="says">says:</span>
+                                                            </div><!-- .comment-author -->
                                                             <li class="comment-content">
                                                                 <p>{{ $reponse->contenu }}</p>
                                                             </li>
@@ -117,8 +137,8 @@
                                                     <input type="hidden" name="review_id" value="{{ $review->id }}">
                                                     <textarea class="comment-content" style="color: black" name="reponse" placeholder="Your reply"></textarea>
                                                     <div class="reply">
-                                                    <button type="submit" class="btn btn-info">Reply</button>
-                                                </div>
+                                                        <button type="submit" class="btn btn-info">Reply</button>
+                                                    </div>
                                                 </form>
                                             </div>
                                         @endforeach
@@ -133,23 +153,10 @@
                                 </div>
                         @endif
                         <!-- Review Submission Form -->
-                        <div class="review-form">
-                            <h5 class="title-2" style="color: orange;">Add a Review</h5>
-                            <form method="post">
-                                @csrf
-                                <textarea id="comment" class="comment-content" name="comment" placeholder="Your opinion" rows="3"></textarea>
-                                <br><br>
-                                <button type="button" class="btn-1" onclick="saveEvaluation()">Submit Evaluation</button>
-                            </form>
 
-                            @error('comment')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
+                    </section>
                 </div>
-                </section>
             </div>
-        </div>
         </div>
         <!-- /.Blog -->
 
@@ -172,6 +179,8 @@
                 </div>
             </div>
         </div>
+    </div>
+
     </div>
 
 
@@ -205,12 +214,13 @@
                 },
                 dataType: 'json',
                 success: function(response) {
-                    // Handle the success response
-                    var successMessage = document.createElement("div");
+                    // Si la soumission est réussie, affichez le message de succès
+                    var successMessage = document.getElementById("success-message");
                     successMessage.innerText = response.message;
-                    successMessage.classList.add("success-message");
-                    document.getElementById("response-message-container").appendChild(successMessage);
+                    successMessage.style.display = "block";
 
+                    // Cachez les erreurs de validation
+                    $('#validation-errors').hide();
                 },
                 error: function(xhr, status, error) {
                     var errorMessage = document.createElement("div");
@@ -237,15 +247,25 @@
                 },
                 dataType: 'json',
                 success: function(response) {
-                    // Handle the success response
-                    var successMessage = document.createElement("div");
+                    // Si la soumission est réussie, affichez le message de succès
+                    var successMessage = document.getElementById("success-message");
                     successMessage.innerText = response.message;
-                    successMessage.classList.add("success-message");
-                    document.getElementById("response-message-container").appendChild(successMessage);
+                    successMessage.style.display = "block";
+
+                    // Cachez les erreurs de validation
+                    $('#validation-errors').hide();
                 },
                 error: function(xhr, status, error) {
-                    console.log('Error:', error);
-                    console.log('Response:', xhr.responseText);
+                    // Si une erreur se produit, traitez les erreurs de validation
+                    var errors = xhr.responseJSON.errors;
+                    var errorText = "Erreurs de validation :<br>";
+
+                    for (var key in errors) {
+                        errorText += errors[key][0] + "<br>";
+                    }
+
+                    $('#validation-errors').html(errorText);
+                    $('#validation-errors').show();
                 }
             });
         }
