@@ -704,7 +704,35 @@ License: You must have a valid license purchased only from themeforest(the above
  <div class="side-menu__title"> Cars management </div>
  </a>
  </li>
+ 
+ <li>
+ <a href="/admin/entretiens" class="side-menu {{ Request::is('admin/entretiens*') ? 'side-menu--active' : '' }}">
+ <div class="side-menu__icon">
+ <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="entretien" data-lucide="entretien" class="lucide lucide-entretien">
+  <circle cx="12" cy="12" r="10"></circle>
+  <line x1="12" y1="16" x2="12" y2="12"></line>
+  <line x1="12" y1="8" x2="12" y2="8"></line>
+  <line x1="16" y1="12" x2="16" y2="16"></line>
+  <line x1="8" y1="12" x2="8" y2="16"></line>
+</svg>
 
+ </div>
+ <div class="side-menu__title"> Entretien management </div>
+ </a>
+ </li>
+ <li>
+ <a href="/admin/facture" class="side-menu {{ Request::is('admin/facture*') ? 'side-menu--active' : '' }}">
+ <div class="side-menu__icon">
+ <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="facture" data-lucide="facture" class="lucide lucide-facture">
+  <rect x="6" y="2" width="12" height="20" rx="2" ry="2"></rect>
+  <line x1="12" y1="2" x2="12" y2="22"></line>
+  <path d="M6 12h12"></path>
+</svg>
+
+ </div>
+ <div class="side-menu__title"> Bill management </div>
+ </a>
+ </li>
  <li>
  <a href="/drivers" class="side-menu {{ Request::is('drivers*') ? 'side-menu--active' : '' }}">
  <div class="side-menu__icon">

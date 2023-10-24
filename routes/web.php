@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ReclamationController;
 use App\Http\Controllers\ReponseController;
 use App\Http\Controllers\UserrController;
+use App\Http\Controllers\FactureController;
+use App\Http\Controllers\EntretienController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -99,4 +102,18 @@ Route::put('/admin/reponses/{reponse}', [ReponseController::class, 'update'])->n
 Route::get('/admin/reponses/{reponse}', [ReponseController::class, 'show'])->name('admin.reponses.show')->middleware('auth');
 Route::get('/reclamations/export', [ReclamationController::class, 'exportExcel'])->name('reclamations.export.excel')->middleware('auth');
 Route::get('/reclamations/export-pdf', [ReclamationController::class, 'exportPDF'])->name('reclamations.export.pdf')->middleware('auth');
+Route::get('admin/extraire-facture', [FactureController::class, 'extraireFacture']);
+
+
+Route::resource('admin/entretiens', EntretienController::class)->middleware('auth');
+Route::post('admin/entretiens', [EntretienController::class, 'store'])->name('admin.entretiens.store')->middleware('auth');
+Route::get('admin/entretiens', [EntretienController::class, 'index'])->name('admin.entretiens.index')->middleware('auth');
+Route::get('admin/facture/upload', [FactureController::class, 'showUploadForm'])->name('admin.facture.upload')->middleware('auth');
+Route::post('admin/facture/upload', [FactureController::class, 'uploadAndExtractFacture'])->name('facture.upload')->middleware('auth');
+Route::post('admin/facture/save', [FactureController::class, 'saveFacture'])->name('facture.save')->middleware('auth');
+Route::get('admin/facture', [FactureController::class, 'index'])->name('facture.index')->middleware('auth');
+Route::get('admin/facture/{id}/edit', [FactureController::class, 'edit'])->name('facture.edit')->middleware('auth');
+Route::put('admin/factures/{id}', [FactureController::class, 'update'])->name('facture.update')->middleware('auth');
+Route::delete('admin/factures/{id}', [FactureController::class, 'destroy'])->name('facture.destroy')->middleware('auth');
+
 });
