@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ReclamationController;
 use App\Http\Controllers\ReponseController;
 use App\Http\Controllers\UserrController;
+use App\Http\Controllers\ChefAgenceController;
+use App\Http\Controllers\AgenceLocationController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -84,9 +87,22 @@ Route::get('/mes-reclamations', [ReclamationController::class, 'mesReclamations'
 ///user back
 Route::get('/back/users', [UserrController::class, 'index'])->name('users.index')->middleware('auth'); // Afficher la liste des utilisateurs
 Route::get('/back/users/{user}/edit', [UserrController::class, 'edit'])->name('users.edit')->middleware('auth'); // Formulaire de modification
-Route::put('/back/users/{user}', [UserrController::class, 'update'])->name('users.update')->middleware('auth'); // Mettre à jour le rôle
+Route::put('/back/users/{user}', [UserrController::class, 'update'])->name('users.update')->middleware('auth');
+Route::get('/view-chefs/{agenceId}', [AgenceLocationController::class, 'viewChefs'])->name('view-chefs');
+
+Route::get('/agency', [AgenceLocationController::class, 'list'])->name('agence.list');
+
+
+
+
+
+
+
 
 Route::middleware(['admin'])->group(function () {
+
+
+
     Route::get('/back/reclamations', [ReclamationController::class, 'index'])->name('reclamations.index')->middleware('auth');
 Route::delete('/reclamations/{reclamation}', [ReclamationController::class, 'destroy'])->name('reclamations.destroy');
 Route::get('/admin/reponses/create', [ReponseController::class, 'create'])->name('admin.reponse.create')->middleware('auth');
@@ -99,4 +115,25 @@ Route::put('/admin/reponses/{reponse}', [ReponseController::class, 'update'])->n
 Route::get('/admin/reponses/{reponse}', [ReponseController::class, 'show'])->name('admin.reponses.show')->middleware('auth');
 Route::get('/reclamations/export', [ReclamationController::class, 'exportExcel'])->name('reclamations.export.excel')->middleware('auth');
 Route::get('/reclamations/export-pdf', [ReclamationController::class, 'exportPDF'])->name('reclamations.export.pdf')->middleware('auth');
+
+
+
+//
+
+Route::get('/chefs', [ChefAgenceController::class, 'index'])->name('chefs.index');
+Route::get('/chefs/create', [ChefAgenceController::class, 'create'])->name('chefs.create');
+Route::post('/chefs', [ChefAgenceController::class, 'store'])->name('chefs.store');
+Route::get('/chefs/{chef}/edit', [ChefAgenceController::class, 'edit'])->name('chefs.edit');
+Route::put('/chefs/{chef}', [ChefAgenceController::class, 'update'])->name('chefs.update');
+Route::delete('/chefs/{chef}', [ChefAgenceController::class, 'destroy'])->name('chefs.destroy');
+
+
+Route::get('/agences', [AgenceLocationController::class, 'index'])->name('agences.index');
+Route::get('/agences/create', [AgenceLocationController::class, 'create'])->name('agences.create');
+Route::post('/agences', [AgenceLocationController::class, 'store'])->name('agences.store');
+Route::get('/agences/{agence}/edit', [AgenceLocationController::class, 'edit'])->name('agences.edit');
+Route::put('/agences/{agence}', [AgenceLocationController::class, 'update'])->name('agences.update');
+Route::delete('/agences/{agence}', [AgenceLocationController::class, 'destroy'])->name('agences.destroy');
+
+
 });

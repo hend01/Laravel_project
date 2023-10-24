@@ -734,6 +734,18 @@ License: You must have a valid license purchased only from themeforest(the above
     <div class="side-menu__title"> Reclamation Management </div>
     </a>
 </li>
+<li id="reclamation">
+    <a href="{{ url('/agences') }}" class="side-menu {{ Request::is('agences*') ? 'side-menu--active' : '' }}">
+    <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
+    <div class="side-menu__title"> Rental Agencies Management </div>
+    </a>
+</li>
+<li id="reclamation">
+    <a href="{{ url('/chefs') }}" class="side-menu {{ Request::is('chefs*') ? 'side-menu--active' : '' }}">
+    <div class="side-menu__icon"> <i data-lucide="users"></i> </div>
+    <div class="side-menu__title"> Agency Head Management </div>
+    </a>
+</li>
 <li id="reponse">
     <a href="{{ url('/admin/reponses/list') }}" class="side-menu {{ Request::is('admin/reponses/list*') ? 'side-menu--active' : '' }}">
     <div class="side-menu__icon"> <i data-lucide="clipboard"></i>    </div>
