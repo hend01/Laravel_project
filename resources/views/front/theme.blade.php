@@ -137,13 +137,8 @@
                                             </ul>
                                         </li>
                                         <li> <a href="{{route('driver.list') }}">Drivers</a> </li>
-<<<<<<< HEAD
-                                        <li> <a href="{{route('events.index') }}">events</a> </li>
-                                        <li> <a href="{{route('produits.index') }}">produits</a> </li>
-=======
                                         <li> <a href="{{route('agence.list') }}">Agences</a> </li>
                                         <li> <a href="{{route('cars.listCars') }}">Cars</a> </li>
->>>>>>> d30e221e2ebc730a4bdbf8936deace5b147426de
 
                                         <li> <a href="/chatify">Chat</a> </li>
 
