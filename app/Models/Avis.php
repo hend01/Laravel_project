@@ -14,6 +14,10 @@ class Avis extends Model
     {
         return $this->belongsTo(Evaluation::class, 'evaluation_id');
     }
+    public function reponses()
+    {
+        return $this->hasMany(ReponseAvis::class, 'avis_id');
+    }
 
     use HasFactory;
 }
