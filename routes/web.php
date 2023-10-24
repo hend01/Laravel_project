@@ -1,18 +1,19 @@
 <?php
 
-use App\Http\Controllers\CarController;
-use App\Http\Controllers\DriverController;
-use App\Http\Controllers\EvaluationController;
-use App\Http\Controllers\AvisController;
-use Illuminate\Support\Facades\Route;
-use SebastianBergmann\CodeCoverage\Driver\Driver;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\ReclamationController;
-use App\Http\Controllers\ReponseController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\AvisController;
 use App\Http\Controllers\UserrController;
 use App\Http\Controllers\ChefAgenceController;
 use App\Http\Controllers\AgenceLocationController;
 
+use App\Http\Controllers\DriverController;
+use App\Http\Controllers\ReponseController;
+use App\Http\Controllers\EvaluationController;
+use App\Http\Controllers\ReclamationController;
+use App\Http\Controllers\ReponseAvisController;
+use SebastianBergmann\CodeCoverage\Driver\Driver;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,24 +58,20 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Avis et Evaluation Routes
-Route::get('/evaluations', [EvaluationController::class, 'index'])->name('evaluations');
-Route::delete('/evaluations/{id}', [EvaluationController::class, 'destroy'])->name('evaluations.destroy');
+
 
 // Route::get('/blog', [EvaluationController::class, 'blog']);
 
-Route::get('/avis', [AvisController::class, 'index'])->name('avis');
-Route::delete('/avis/{id}', [AvisController::class, 'destroy'])->name('avis.destroy');
+//Avis et Evaluation Routes
 
-Route::post('/add-evaluation/{driverId}', [EvaluationController::class, 'store'])->name('evaluations.add');
-Route::get('/blog/{driverId}', [AvisController::class, 'showDriverReviews'])->name('blog.driverReviews');
-
-Route::post('/add-evaluation-and-avis/{driverId}', [AvisController::class, 'addEvaluationAndAvis'])->name('avis.addAvisAndEvaluation');
-
-
-//driver
+Route::post('/add-evaluation/{driverId}', [EvaluationController::class, 'store'])->name('evaluations.add')->middleware('auth');
+Route::get('/blog/{driverId}', [AvisController::class, 'showDriverReviews'])->name('blog.driverReviews')->middleware('auth');
+Route::post('/add-evaluation-and-avis/{driverId}', [AvisController::class, 'addEvaluationAndAvis'])->name('avis.addAvisAndEvaluation')->middleware('auth');
 Route::get('/driver/details/{driverId}', [DriverController::class, 'showDriverDetails'])->name('driver.details');
 Route::get('/driver/list', [DriverController::class, 'list'])->name('driver.list');
+
+Route::get('/carsList', [CarController::class, 'listCars'])->name('cars.listCars');
+
 
 
 // front reclamation
@@ -135,5 +132,10 @@ Route::get('/agences/{agence}/edit', [AgenceLocationController::class, 'edit'])-
 Route::put('/agences/{agence}', [AgenceLocationController::class, 'update'])->name('agences.update');
 Route::delete('/agences/{agence}', [AgenceLocationController::class, 'destroy'])->name('agences.destroy');
 
+//Avis et Evaluation Routes
+Route::get('/avis', [AvisController::class, 'index'])->name('avis');
+Route::delete('/avis/{id}', [AvisController::class, 'destroy'])->name('avis.destroy')->middleware('auth');
+Route::get('/evaluations', [EvaluationController::class, 'index'])->name('evaluations');
+Route::delete('/evaluations/{id}', [EvaluationController::class, 'destroy'])->name('evaluations.destroy');
 
 });

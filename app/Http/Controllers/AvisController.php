@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Avis;
-use App\Models\Evaluation;
 use App\Models\driver;
+use App\Models\Evaluation;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AvisController extends Controller
 {
@@ -64,7 +65,13 @@ class AvisController extends Controller
         // Check if the user has already rated the driver
         $rating = $request->input('rating');
         $comment = $request->input('comment');
-
+        Validator::make($request->all(), [
+            'comment' => 'required|string|min:2|max:255',
+        ], [
+            'comment.required' => 'Comment field is required.',
+            'comment.min' => 'Comment field must have at least 2 characters.',
+        ])->validate();
+       
         // Perform the necessary actions to add an evaluation and avis simultaneously
         // Add evaluation (similar to your existing 'add-evaluation' method)
         $evaluation = new Evaluation();
@@ -77,15 +84,12 @@ class AvisController extends Controller
         $avis = new Avis();
         $avis->commentaire = $comment;
         $avis->evaluation_id = $evaluation->id; // Link avis to the newly created evaluation
-        
         $avis->save();
+
         return response()->json(['message' => 'Evaluation and Avis added successfully']);
         }
        
-
-       
-        
-    }
+}
 
 
 

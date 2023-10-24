@@ -27,13 +27,15 @@ class ReclamationController extends Controller
             'sujet' => 'required|string|max:255',
             'description' => 'required|string|min:20',
         ]);
-
+        //profanity
         if (auth()->check()) {
             $userId = auth()->user()->id;
 
+            $string = app('profanityFilter')->replaceWith('#')->replaceFullWords(false)->filter($request->input('description'));
+
             Reclamation::create([
                 'sujet' => $request->input('sujet'),
-                'description' => $request->input('description'),
+                'description' => $string,
                 'id_user' => $userId,
             ]);
 

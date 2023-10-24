@@ -98,6 +98,12 @@
                             </div>
                         </div>
                     </div>
+                    @guest
+                        <!-- Contenu à afficher si aucun utilisateur n'est connecté -->
+                        <a data-toggle="modal" class="sign-in fs-12 theme-clr-bg" href="{{ route('login') }}">LOG IN</a>
+                    @endguest
+                 
+                    
                 </div>
                 <!-- /.Header Topbar -->
 
@@ -132,6 +138,7 @@
                                         </li>
                                         <li> <a href="{{route('driver.list') }}">Drivers</a> </li>
                                         <li> <a href="{{route('agence.list') }}">Agences</a> </li>
+                                        <li> <a href="{{route('cars.listCars') }}">Cars</a> </li>
 
                                         <li> <a href="/chatify">Chat</a> </li>
 

@@ -24,8 +24,8 @@ class ReponseController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'contenu' => 'required|string',
-            'reclamation_id' => 'required|exists:reclamations,id', // Assurez-vous que la relation existe
+            'contenu' => 'required|string|min:20',
+            'reclamation_id' => 'required|exists:reclamations,id',
         ]);
 
         Reponse::create([

@@ -46,7 +46,7 @@ class EvaluationController extends Controller
             return response()->json(['message' => 'Sorry , you have already rated this driver.']);
         } else{
             $evaluation->save();
-            return response()->json(['message' => 'Evaluation saved successfully']);
+            return response()->json(['message' => 'Evaluation added successfully']);
 
         }
     }
@@ -75,7 +75,9 @@ class EvaluationController extends Controller
         if (!$evaluation) {
             return redirect('/evaluations')->with('error', 'Evaluation not found.');
         }
-        $avis->delete();
+        if($avis){
+            $avis->delete();
+        }
         $evaluation->delete();
 
         return redirect('/evaluations')->with('success', 'The evaluation has been deleted successfully.');

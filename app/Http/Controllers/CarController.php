@@ -20,6 +20,16 @@ class CarController extends Controller
 
         return view('admin.list-cars', compact('cars','weatherData'));
     }
+    public function listCars()
+    {
+       
+    
+
+        $cars = car::all(); 
+
+
+        return view('front.blog.CarsList',compact('cars'));
+    }
 
 
 
