@@ -25,6 +25,8 @@ class DriverController extends Controller
         return view('front.blog.list-drivers', compact('drivers'));
     }
 
+
+    
     public function showDriverDetails($driverId)
     {
         $driver = Driver::findOrFail($driverId);

@@ -136,8 +136,13 @@
                                                 @endauth
                                             </ul>
                                         </li>
+                                        <li> <a href="{{route('events.index') }}">events</a> </li>
+                                        <li> <a href="{{route('produits.index') }}">produits</a> </li>
                                         <li> <a href="{{route('driver.list') }}">Drivers</a> </li>
+                                        <li> <a href="{{route('agence.list') }}">Agences</a> </li>
+                                        <li> <a href="{{route('cars.listCars') }}">Cars</a> </li>
 
+                                        <li> <a href="/chatify">Chat</a> </li>
 
                                         <li><span class="search fa fa-search theme-clr transition"> </span></li>
                                     </ul>
