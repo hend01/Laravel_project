@@ -4,6 +4,8 @@ use App\Http\Controllers\CarController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\AvisController;
+use App\Http\Controllers\eventController;
+use App\Http\Controllers\produitController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Driver\Driver;
 use Illuminate\Support\Facades\Auth;
@@ -79,6 +81,29 @@ Route::delete('/recl/{reclamation}', [ReclamationController::class, 'destroyfron
 Route::get('/reclamation/create', [ReclamationController::class, 'create'])->name('reclamations.create');
 Route::post('/reclamations', [ReclamationController::class, 'store'])->name('reclamations.store');
 Route::get('/mes-reclamations', [ReclamationController::class, 'mesReclamations'])->name('mes-reclamations');
+//event produit
+Route::get('/events', [eventController::class, 'index'])->name('events.index');
+Route::post('/participate/{id}', [eventController::class, 'participate'])->name('events.participate');
+Route::get('/event/{id}', [eventController::class, 'get']);
+
+Route::get('/produits', [produitController::class, 'index'])->name('produits.index');
+Route::get('/produit/{id}', [produitController::class, 'get']);
+//event produit back
+Route::get('/event/create/add', [eventController::class, 'create'])->middleware('auth');
+Route::post('/event', [eventController::class, 'store'])->name('event.store')->middleware('auth');
+Route::delete('/ev/delete/{event}', [eventController::class,'destroy'])->middleware('auth');
+Route::get('/events/{event}', [eventController::class, 'edit'])->name('produits.edit'); 
+Route::get('/produits/{produit}', [produitController::class, 'edit'])->name('produits.edit'); 
+Route::put('/events/{event}', [eventController::class, 'update'])->name('events.update'); 
+Route::put('/produits/{produit}', [produitController::class, 'update'])->name('produits.update'); 
+//email
+Route::get('/send-test-email', [produitController::class,'sendTestEmail']);
+
+
+Route::delete('/produit/delete/{produit}', [produitController::class,'destroy'])->middleware('auth');
+Route::get('/produit/create/add', [produitController::class, 'create'])->middleware('auth');
+Route::post('/produit', [produitController::class, 'store'])->name('produit.store')->middleware('auth');
+
 
 
 ///user back
@@ -100,3 +125,7 @@ Route::get('/admin/reponses/{reponse}', [ReponseController::class, 'show'])->nam
 Route::get('/reclamations/export', [ReclamationController::class, 'exportExcel'])->name('reclamations.export.excel')->middleware('auth');
 Route::get('/reclamations/export-pdf', [ReclamationController::class, 'exportPDF'])->name('reclamations.export.pdf')->middleware('auth');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
