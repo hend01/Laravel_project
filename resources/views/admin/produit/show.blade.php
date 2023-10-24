@@ -4,8 +4,6 @@
 @section('content')
 
 <div class="content">
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
     <!-- BEGIN: Top Bar -->
     <div class="top-bar">
         <!-- BEGIN: Breadcrumb -->
@@ -44,14 +42,14 @@
                     <div class="mb-5">
                         <a href="#" class="flex items-center mt-2">
                             <div class="w-8 h-8 image-fit">
-                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="{{url('dist/images/profile-13.jpg')}}">
+                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-13.jpg">
                             </div>
                             <div class="ml-3">Kate Winslet</div>
                             <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">katewinslet@left4code.com</div>
                         </a>
                         <a href="#" class="flex items-center mt-2">
                             <div class="w-8 h-8 image-fit">
-                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="/dist/images/profile-8.jpg">
+                                <img alt="Midone - HTML Admin Template" class="rounded-full" src="dist/images/profile-8.jpg">
                             </div>
                             <div class="ml-3">Al Pacino</div>
                             <div class="ml-auto w-48 truncate text-slate-500 text-xs text-right">alpacino@left4code.com</div>
@@ -182,7 +180,7 @@
         <!-- BEGIN: Account Menu -->
         <div class="intro-x dropdown w-8 h-8">
             <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in" role="button" aria-expanded="false" data-tw-toggle="dropdown">
-                <img alt="Midone - HTML Admin Template" src="/dist/images/profile-2.jpg">
+                <img alt="Midone - HTML Admin Template" src="dist/images/profile-2.jpg">
             </div>
             <div class="dropdown-menu w-56">
                 <ul class="dropdown-content bg-primary text-white">
@@ -225,86 +223,47 @@
     </div>
     <!-- END: Top Bar -->
     <h2 class="intro-y text-lg font-medium mt-10" style="background-color:#1e40af;color:white;border-radius: 8px;">
-        <span style="margin-left: 11px;"> produit</span>
-     </h2>
-     
-     <div class="grid grid-cols-12 gap-6 mt-5">
-        <div class="intro-y col-span-12 lg:col-span-6">
-            <!-- BEGIN: Form Layout -->
-    
-            <div class="row">
-                <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <!-- BEGIN: Input -->
-                <div class="intro-y box">
-                
-                    <div id="input" class="p-5">
-                        <div class="preview" style="display: block;">
-    
-<section class="contact-page pad-30">
-    <div class="theme-container container">
-        <div class="col-md-10 col-sm-6 col-md-offset-1 contact-form">
-            <div class="calculate-form">
-                <form class="row" action="{{ route('produit.store') }}" method="POST" id="contact-form">
-                    @csrf
-                    <div class="form-group wow fadeInUp" data-wow-offset="50" data-wow-delay=".30s">
-                        <div class="col-sm-3">
-                            <label class="title-2">name:</label>
-                        </div>
-                        <div class="col-sm-9">
-                            <input type="text" name="name" id="name" required placeholder="" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group wow fadeInUp" data-wow-offset="50" data-wow-delay=".30s">
-                        <div class="col-sm-3">
-                            <label class="title-2">Description:</label>
-                        </div>
-                        <div class="col-sm-9">
-                            <textarea class="form-control" name="description" id="description" required cols="25" rows="3"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group wow fadeInUp" data-wow-offset="50" data-wow-delay=".30s">
-                        <div class="col-sm-3">
-                            <label class="title-2">offer:</label>
-                        </div>
-                        <div class="col-sm-9">
-                            <input type="text" name="offer" id="offer" required placeholder="" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group wow fadeInUp" data-wow-offset="50" data-wow-delay=".30s">
-                        <div class="col-sm-3">
-                            <label class="title-2">prix: </label>
-                        </div>
-                        <div class="col-sm-9">
-                            <input type="text" name="prix" id="prix" required placeholder="" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group wow fadeInUp" data-wow-offset="50" data-wow-delay=".30s">
-                        <div class="col-sm-9 col-xs-12 pull-right">
-                            <button type="button" class="btn btn-outline-secondary w-24 mr-1">Annuler</button>
-                            <button type="submit" class="btn btn-primary w-24" id="submitBtn">add</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
-<div class="theme-container container">
-    @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-    @endif
+        <span style="margin-left: 11px;"> Cars list </span>
+    </h2>
+    <a href="{{ route('produit.create') }}" class="text-blue-500 add-car-link block" style="position: absolute; top: 212px; left: 290px; z-index: 9999; font-weight: bold; color: #1e40af;">Add new produit +</a>
 
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+    <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
+        <table id="example" class="table table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>description</th>
+                    <th>offer</th>
+                    <th>prix</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($produits as $produit)
+                    <tr>
+
+                        
+                        <td>{{  $produit->name }}</td>
+                        <td>{{ $produit->offer }}</td>
+                        <td>{{ $produit->description }}</td>
+                        <td>{{ $produit->prix }}</td>
+                    
+                        <td>
+                            <form action="{{ url("/produit/delete/$produit->id")}}" method="POST" style="display: inline-block;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger" style="margin-bottom: 4px">Delete</button>
+                            </form>
+                        
+                            <a href="{{ route('produits.update', $produit->id) }}" style="width:66px" class="btn btn-primary">Edit</a>
+                            @csrf
+                            </form>
+                        </td>
+                        
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+        
     </div>
-    @endif
-</div>
+
 @endsection

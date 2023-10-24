@@ -7,6 +7,10 @@ use App\Http\Controllers\AvisController;
 use App\Http\Controllers\UserrController;
 use App\Http\Controllers\FactureController;
 use App\Http\Controllers\EntretienController;
+use App\Http\Controllers\produitController;
+use App\Http\Controllers\eventController;
+
+
 
 use App\Http\Controllers\ChefAgenceController;
 use App\Http\Controllers\AgenceLocationController;
@@ -91,21 +95,22 @@ Route::get('/event/{id}', [eventController::class, 'get']);
 Route::get('/produits', [produitController::class, 'index'])->name('produits.index');
 Route::get('/produit/{id}', [produitController::class, 'get']);
 //event produit back
-Route::get('/event/create/add', [eventController::class, 'create'])->middleware('auth');
+Route::get('/event/create/add', [eventController::class, 'create'])->middleware('auth')->name('event.create');
 Route::post('/event', [eventController::class, 'store'])->name('event.store')->middleware('auth');
 Route::delete('/ev/delete/{event}', [eventController::class,'destroy'])->middleware('auth');
 Route::get('/events/{event}', [eventController::class, 'edit'])->name('produits.edit'); 
 Route::get('/produits/{produit}', [produitController::class, 'edit'])->name('produits.edit'); 
 Route::put('/events/{event}', [eventController::class, 'update'])->name('events.update'); 
 Route::put('/produits/{produit}', [produitController::class, 'update'])->name('produits.update'); 
+Route::get('/produitss', [produitController::class, 'show'])->name('produits.show'); 
+Route::get('/eventss', [eventController::class, 'show'])->name('events.show'); 
 //email
 Route::get('/send-test-email', [produitController::class,'sendTestEmail']);
 
 
 Route::delete('/produit/delete/{produit}', [produitController::class,'destroy'])->middleware('auth');
-Route::get('/produit/create/add', [produitController::class, 'create'])->middleware('auth');
+Route::get('/produit/create/add', [produitController::class, 'create'])->middleware('auth')->name('produit.create');
 Route::post('/produit', [produitController::class, 'store'])->name('produit.store')->middleware('auth');
-
 
 
 ///user back

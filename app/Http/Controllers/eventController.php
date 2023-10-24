@@ -14,7 +14,12 @@ class eventController extends Controller
         $events = event::all();
         return view('front.event.index', compact('events'));
     }
+    public function show()
+    {
+        $events = event::all();
+        return view('admin.event.show', compact('events'));
 
+    }
     public function create()
     {
         return view('admin.event.add');
@@ -41,12 +46,12 @@ class eventController extends Controller
             ]);
             $event->produit()->attach($produits);
             $this->sendTestEmail("produit added");
-            $this->sendSMS("produit added");
+            // $this->sendSMS("produit added");
 
-            return redirect()->route('home')
+            return redirect()->route('events.show')
                 ->with('success', 'Done.');
         } else {
-            return redirect()->route('login')->with('error', 'Error.');
+            return redirect()->route('events.show')->with('error', 'Error.');
         }
     }
 
@@ -76,14 +81,11 @@ class eventController extends Controller
 
     public function destroy(Event $event)
     {
-        if (auth()->check()) {
-            $userId = auth()->user()->role;
-            if ($userId === "admin") {
+        
                 $event->delete();
-            }
-            return redirect()->route('events.index')->with('success', 'Event deleted successfully.');
-        }
-        return redirect()->route('home')->with('success', 'Event deleted successfully.');
+         
+            return redirect()->route('events.show')->with('success', 'Event deleted successfully.');
+       
     }
     public function edit($id)
     {
@@ -91,7 +93,7 @@ class eventController extends Controller
         $event = event::find($id);
 
         if (!$event) {
-            return redirect('/events')->with('error', 'event introuvable.');
+            return redirect('/eventss')->with('error', 'event introuvable.');
         }
 
         return view('admin.event.get', compact('event'));
@@ -108,7 +110,7 @@ class eventController extends Controller
         $event = event::find($id);
 
         if (!$event) {
-            return redirect('/events')->with('error', 'event not found.');
+            return redirect('/eventss')->with('error', 'event not found.');
         }
 
         $event->name = $test['name'];
@@ -118,7 +120,7 @@ class eventController extends Controller
 
         $event->save();
 
-        return redirect('/events')->with('success', 'event has been updated successfully.');
+        return redirect('/eventss')->with('success', 'event has been updated successfully.');
     }
     
     public  function  sendTestEmail($content)
